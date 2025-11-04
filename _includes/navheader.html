@@ -3,7 +3,7 @@
     <div class="container">
 	  <a class="navbar-brand js-scroll-trigger" href="#page-top">
           {%- if site.logo -%}
-            <img height="{{ site.logo.height | default: 52 }}" src="{{ site.logo.path }}"/>
+            <img height="{{ site.logo.height | default: 52 }}" src="{% if site.logo.path contains '://' or site.logo.path | slice: 0, 1 == '/' %}{{ site.logo.path }}{% else %}{{ site.baseurl }}/{{ site.logo.path }}{% endif %}"/>
           {%- else -%}
             {{ site.title }}
           {%- endif -%}

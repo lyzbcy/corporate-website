@@ -338,3 +338,35 @@ de-LI: #German (Liechtenstein)
   <<: *DEFAULT_DE
 de-LU: #German (Luxembourg)
   <<: *DEFAULT_DE
+
+# 中文 (简体) (https://localizely.com/language-code/zh/)
+# -----------------
+zh: &DEFAULT_ZH
+  nav:
+    - title: "服务"
+      section: services
+    - title: "作品集"
+      section: portfolio
+    - title: "关于我们"
+      section: about
+    - title: "时间线"
+      section: timeline
+    - title: "团队"
+      section: team
+    - title: "联系我们"
+      section: contact
+    - title: "主题源码"
+      url: https://github.com/raviriley/agency-jekyll-theme/
+
+zh-CN: #Chinese (Simplified, China)
+  <<: *DEFAULT_ZH
+zh-Hans: #Chinese (Simplified)
+  <<: *DEFAULT_ZH
+zh-Hans-CN: #Chinese (Simplified, China)
+  <<: *DEFAULT_ZH
+zh-Hans-HK: #Chinese (Simplified, Hong Kong)
+  <<: *DEFAULT_ZH
+zh-Hans-MO: #Chinese (Simplified, Macao)
+  <<: *DEFAULT_ZH
+zh-Hans-SG: #Chinese (Simplified, Singapore)
+  <<: *DEFAULT_ZH

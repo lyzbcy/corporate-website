@@ -21,18 +21,71 @@ email      : lyzbcy@qq.com #this is also the email contact forms will go to
 description: "这是一个工作室官网"
 author     : 捞鱼
 # logo:     #optional, defaults to site title
-  # path: assets\img\clients\creative-market.jpg
+  # path: assets/img/clients/creative-market.jpg
   # height: 60 #height in px, defaults to 52px
 
 locale: "zh-CN" # See available languages in _data/sitetext.yml
 
+# Analytics
 analytics:
   google: #Google Analytics tracking code here
 
+# Collections
 collections:
   portfolio:
+    output: true
 
+# Markdown settings
 markdown: kramdown
+
+# Kramdown configuration
+kramdown:
+  input: GFM
+  hard_wrap: false
+  auto_ids: true
+  footnote_nr: 1
+  entity_output: as_char
+  toc_levels: 1..6
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  enable_coderay: false
+
+# Highlighter for code blocks
+highlighter: rouge
+
+# Plugins (for GitHub Pages, plugins are managed automatically)
+# plugins:
+#   - jekyll-feed
+#   - jekyll-sitemap
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .git
+  - .gitignore
+  - .github
+  - README.md
+  - LICENSE.txt
+  - jekyll-agency.gemspec
+  - .sass-cache
+  - .jekyll-cache
+  - .jekyll-metadata
+
+# Include files that are normally excluded
+# include:
+#   - .htaccess
+
+# Build settings
+timezone: Asia/Shanghai # 设置时区为中国时区
+encoding: utf-8
+future: false # 不显示未来日期的文章
+safe: false # 允许使用插件
+
+# Permalink format (optional)
+# permalink: pretty
 
 # Uncomment following line to use Formspree form ID based URL instead of email based URL
 # Details: https://help.formspree.io/hc/en-us/articles/360017735154-How-to-prevent-spam
