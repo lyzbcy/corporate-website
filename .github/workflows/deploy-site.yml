@@ -11,24 +11,28 @@ jobs:
     steps:
       - uses: actions/checkout@v4  # 拉取代码
       
-      # 步骤2：安装系统依赖和构建工具（用于编译 Ruby gem 原生扩展）
-      - name: 安装系统依赖和构建工具
+      # 步骤2：安装 Ruby 构建依赖（用于编译 Ruby gem 原生扩展）
+      - name: 安装 Ruby 构建依赖
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential libffi-dev zlib1g-dev
+          sudo apt-get install -y build-essential libffi-dev
       
-      # 步骤3：设置 Ruby 环境并安装依赖
+      # 步骤3：清理可能损坏的缓存目录
+      - name: 清理缓存目录
+        run: rm -rf vendor/bundle
+      
+      # 步骤4：设置 Ruby 环境并安装依赖
       - name: 设置 Ruby 环境
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.1'  # 根据你的 Gemfile 要求调整版本
           bundler-cache: true  # 自动缓存并安装依赖
       
-      # 步骤4：构建 Jekyll 网站
+      # 步骤5：构建 Jekyll 网站
       - name: 构建网站
         run: bundle exec jekyll build
       
-      # 步骤5：部署到 GitHub Pages
+      # 步骤6：部署到 GitHub Pages
       - name: 部署到Pages
         uses: peaceiris/actions-gh-pages@v3
         with:

@@ -2,8 +2,8 @@
 source "https://rubygems.org"
 gemspec
 
-# 固定 sass-embedded 版本以确保构建成功
-gem 'sass-embedded', '~> 1.93', '>= 1.93.3'
+# 固定 sass-embedded 版本以确保构建成功（使用更稳定的版本）
+gem 'sass-embedded', '~> 1.91'
 
 # Delete the following lines if not on Windows: 
 # Performance-booster for watching directories on Windows
