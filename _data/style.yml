@@ -1,7 +1,7 @@
 #Color Customization
-highlight: "#54bfff"  # 现代蓝色主题
-white: "#ffffff"
-black: "#212529"
+highlight: "#F5D061"  # 奶油芥末黄（主黄）
+white: "#FAFAF5"      # 柔质米白
+black: "#333333"      # 中性深灰
 
 #Image Customization
 header-image: "../img/header.png"

@@ -2,14 +2,14 @@
 .footer {
   padding: 40px 0;
   text-align: center;
-  background: linear-gradient(135deg, $gray-900 0%, darken($gray-900, 5%) 100%);
-  border-top: 1px solid rgba(84, 191, 255, 0.2);
+  background: linear-gradient(135deg, #FAFAF5 0%, #ffffff 100%);
+  border-top: 1px solid rgba(245, 208, 97, 0.2);
   
   span.copyright {
     font-size: 90%;
     line-height: 40px;
     text-transform: none;
-    color: rgba(255, 255, 255, 0.8);
+    color: #333333;
     @include heading-font;
   }
   
@@ -21,7 +21,7 @@
     @include heading-font;
     
     a {
-      color: rgba(255, 255, 255, 0.8);
+      color: #333333;
       transition: all 0.3s ease;
       
       &:hover {
@@ -50,15 +50,15 @@ ul.social-buttons {
       color: white;
       border-radius: 50%;
       outline: none;
-      background: linear-gradient(135deg, $gray-800 0%, $gray-900 100%);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      background: linear-gradient(135deg, #E6C260 0%, #F5D061 100%);
+      box-shadow: 0 2px 10px rgba(245, 208, 97, 0.3);
       
       &:active,
       &:focus,
       &:hover {
-        background: linear-gradient(135deg, #54bfff 0%, #3699eb 100%);
+        background: linear-gradient(135deg, #F5D061 0%, #E6C260 100%);
         transform: translateY(-5px);
-        box-shadow: 0 6px 20px rgba(84, 191, 255, 0.5);
+        box-shadow: 0 6px 20px rgba(230, 194, 96, 0.5);
       }
     }
   }

@@ -3,7 +3,7 @@
   @include heading-font;
   font-weight: 700;
   transition: all 0.3s ease;
-  border-radius: 50px;
+  border-radius: 8px;
   position: relative;
   overflow: hidden;
   
@@ -34,11 +34,11 @@
 .btn-xl {
   font-size: 18px;
   padding: 20px 40px;
-  box-shadow: 0 4px 15px rgba(84, 191, 255, 0.4);
+  box-shadow: 0 4px 15px rgba(245, 208, 97, 0.4);
   
   &:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(84, 191, 255, 0.6);
+    box-shadow: 0 6px 20px rgba(230, 194, 96, 0.6);
   }
   
   &:active {
@@ -47,7 +47,7 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #54bfff 0%, #3699eb 50%, #007bff 100%);
+  background: linear-gradient(135deg, #F5D061 0%, #E6C260 100%);
   border: none;
   color: white;
   position: relative;
@@ -55,13 +55,30 @@
   &:active,
   &:focus,
   &:hover {
-    background: linear-gradient(135deg, #3699eb 0%, #007bff 50%, #0056b3 100%) !important;
+    background: linear-gradient(135deg, #E6C260 0%, #F5D061 100%) !important;
     color: white !important;
     border: none !important;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(230, 194, 96, 0.5);
   }
   
   &:active,
   &:focus {
-    box-shadow: 0 0 0 0.2rem rgba(84, 191, 255, 0.5) !important;
+    box-shadow: 0 0 0 0.2rem rgba(245, 208, 97, 0.5) !important;
+  }
+}
+
+.btn-secondary {
+  background: white;
+  border: 2px solid #F5D061;
+  color: #F5D061;
+  position: relative;
+  
+  &:active,
+  &:focus,
+  &:hover {
+    background: #F5D061 !important;
+    color: white !important;
+    border: 2px solid #F5D061 !important;
   }
 }

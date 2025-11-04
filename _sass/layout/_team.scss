@@ -10,7 +10,7 @@
   
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(84, 191, 255, 0.25);
+    box-shadow: 0 15px 40px rgba(245, 208, 97, 0.25);
     
     img {
       transform: scale(1.05);
@@ -32,7 +32,7 @@
     margin-top: 25px;
     margin-bottom: 0;
     text-transform: none;
-    color: $gray-800;
+    color: #333333;
     font-weight: 600;
     transition: color 0.3s ease;
   }
@@ -66,7 +66,7 @@
           background: $primary;
           color: white;
           transform: translateY(-5px);
-          box-shadow: 0 6px 15px rgba(84, 191, 255, 0.4);
+          box-shadow: 0 6px 15px rgba(245, 208, 97, 0.4);
         }
       }
     }

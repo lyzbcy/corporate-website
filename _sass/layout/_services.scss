@@ -1,5 +1,7 @@
 // Styling for the services section
 #services {
+  background-color: #FAFAF5;
+  
   .col-md-4 {
     padding: 30px 20px;
     margin-bottom: 30px;
@@ -7,10 +9,12 @@
     border-radius: 15px;
     background: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    border: 2px solid transparent;
     
     &:hover {
       transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(84, 191, 255, 0.2);
+      box-shadow: 0 10px 30px rgba(245, 208, 97, 0.2);
+      border-color: #F5D061;
       
       .fa-stack {
         transform: scale(1.1);
@@ -29,7 +33,7 @@
     
     .fa-circle {
       color: $primary !important;
-      filter: drop-shadow(0 2px 4px rgba(84, 191, 255, 0.3));
+      filter: drop-shadow(0 2px 4px rgba(245, 208, 97, 0.3));
     }
     
     .fa-inverse {
@@ -41,7 +45,7 @@
 .service-heading {
   margin: 15px 0;
   text-transform: none;
-  color: $gray-800;
+  color: #333333;
   font-weight: 600;
   transition: color 0.3s ease;
 }

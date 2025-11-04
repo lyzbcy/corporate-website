@@ -3,6 +3,8 @@ body {
   overflow-x: hidden;
   @include body-font;
   scroll-behavior: smooth;
+  background-color: #FAFAF5;
+  color: #333333;
 }
 
 p {
@@ -53,7 +55,7 @@ h6 {
       transform: translateX(-50%);
       width: 60px;
       height: 4px;
-      background: linear-gradient(135deg, #54bfff 0%, #3699eb 100%);
+      background: linear-gradient(135deg, #F5D061 0%, #E6C260 100%);
       border-radius: 2px;
     }
   }
