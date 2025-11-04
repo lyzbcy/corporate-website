@@ -3,8 +3,9 @@ name: Build and Deploy Site
 on:
   push:
     branches: [ main ]  # 代码推送到main分支时触发
-  pull_request:
-    branches: [ main ]  # PR到main分支时也可触发（用于测试构建）
+  # 如果不需要 PR 测试构建，可以移除下面的 pull_request 配置
+  # pull_request:
+  #   branches: [ main ]  # PR到main分支时也可触发（用于测试构建）
 
 jobs:
   build-deploy:
