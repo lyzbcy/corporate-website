@@ -3,9 +3,8 @@ name: Build and Deploy Site
 on:
   push:
     branches: [ main ]  # 代码推送到main分支时触发
-  # 如果不需要 PR 测试构建，可以移除下面的 pull_request 配置
-  # pull_request:
-  #   branches: [ main ]  # PR到main分支时也可触发（用于测试构建）
+  pull_request:
+    branches: [ main ]  # PR到main分支时也可触发（用于测试构建）
 
 jobs:
   build-deploy:
@@ -61,5 +60,21 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.WORKDIR }}/_site  # Jekyll 默认构建输出目录
           # cname: 你的自定义域名（如果有）
+      
+      # 步骤8：输出部署网址（仅在部署成功时显示）
+      - name: 输出部署网址
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push' && success()
+        run: |
+          echo "::notice::🚀 部署成功！"
+          echo "::notice::📦 仓库：${{ github.repository }}"
+          echo "::notice::🌐 访问网址：https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+          echo ""
+          echo "=========================================="
+          echo "🎉 GitHub Pages 部署完成！"
+          echo "📦 仓库：${{ github.repository }}"
+          echo "🌐 访问网址：https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}"
+          echo "=========================================="
+          # 设置输出变量，方便在其他步骤中引用
+          echo "deploy_url=https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}" >> $GITHUB_OUTPUT
 
 
