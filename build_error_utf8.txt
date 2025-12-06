@@ -1,0 +1,314 @@
+﻿bundle : D:/Ruby34-x6
+4/lib/ruby/gems/3.4.0
+/gems/jekyll-4.4.1/li
+b/jekyll.rb:26: warni
+ng: logger was loaded
+ from the standard li
+brary, but will no lo
+nger be part of the d
+efault gems starting 
+from Ruby 3.5.0.
+所在位置 行:1 字符: 1
++ bundle exec jekyll 
+build --trace > build
+_error.txt 2>&1
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (D:/Ruby   
+ 34-x64/l...rom R    
+uby 3.5.0.:Strin    g
+) [], RemoteExc    ep
+tion
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+You can add logger to
+ your Gemfile or gems
+pec to silence this w
+arning.
+Configuration file: E:/github/Corporate Website/agency-jekyll-theme-master/_config.yml
+[31m  Dependency Err
+or: Yikes! It looks l
+ike you don't have tz
+info or one of its de
+pendencies installed.
+ In order to use Jeky
+ll as currently confi
+gured, you'll need to
+ install this gem. If
+ you've run Jekyll wi
+th `bundle exec`, ens
+ure that you have inc
+luded the tzinfo gem 
+in your Gemfile as we
+ll. The full error me
+ssage from Ruby is: '
+cannot load such file
+ -- tzinfo' If you ru
+n into trouble, you c
+an find helpful resou
+rces at https://jekyl
+lrb.com/help/! [0m
+D:/Ruby34-x64/lib/rub
+y/gems/3.4.0/gems/jek
+yll-4.4.1/lib/jekyll/
+external.rb:70:in 'bl
+ock in Jekyll::Extern
+al.require_with_grace
+ful_fail': tzinfo (Je
+kyll::Errors::Missing
+DependencyException)
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/external.rb:55:
+in 'Array#each'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/external.rb:55:
+in 'Jekyll::External.
+require_with_graceful
+_fail'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/utils/win_tz.rb
+:15:in 'Jekyll::Utils
+::WinTZ#calculate'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll.rb:135:in 'Jeky
+ll.set_timezone'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll.rb:123:in 'bloc
+k in Jekyll.configura
+tion'
+	from <internal:kerne
+l>:91:in 'Kernel#tap'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll.rb:122:in 'Jeky
+ll.configuration'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/command.rb:44:i
+n 'Jekyll::Command.co
+nfiguration_from_opti
+ons'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/commands/build.
+rb:29:in 'Jekyll::Com
+mands::Build.process'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/command.rb:91:i
+n 'block in Jekyll::C
+ommand.process_with_g
+raceful_fail'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/command.rb:91:i
+n 'Array#each'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/command.rb:91:i
+n 'Jekyll::Command.pr
+ocess_with_graceful_f
+ail'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/commands/build.
+rb:18:in 'block (2 le
+vels) in Jekyll::Comm
+ands::Build.init_with
+_program'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/mercenary-0.4.0/li
+b/mercenary/command.r
+b:221:in 'block in Me
+rcenary::Command#exec
+ute'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/mercenary-0.4.0/li
+b/mercenary/command.r
+b:221:in 'Array#each'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/mercenary-0.4.0/li
+b/mercenary/command.r
+b:221:in 'Mercenary::
+Command#execute'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/mercenary-0.4.0/li
+b/mercenary/program.r
+b:44:in 'Mercenary::P
+rogram#go'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/mercenary-0.4.0/li
+b/mercenary.rb:21:in 
+'Mercenary.program'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/exe/j
+ekyll:15:in '<top (re
+quired)>'
+	from D:/Ruby34-x64/b
+in/jekyll:25:in 'Kern
+el#load'
+	from D:/Ruby34-x64/b
+in/jekyll:25:in '<mai
+n>'
+D:/Ruby34-x64/lib/rub
+y/3.4.0/bundled_gems.
+rb:82:in 'Kernel.requ
+ire': cannot load suc
+h file -- tzinfo (Loa
+dError)
+	from D:/Ruby34-x64/l
+ib/ruby/3.4.0/bundled
+_gems.rb:82:in 'block
+ (2 levels) in Kernel
+#replace_require'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/external.rb:57:
+in 'block in Jekyll::
+External.require_with
+_graceful_fail'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/external.rb:55:
+in 'Array#each'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/external.rb:55:
+in 'Jekyll::External.
+require_with_graceful
+_fail'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/utils/win_tz.rb
+:15:in 'Jekyll::Utils
+::WinTZ#calculate'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll.rb:135:in 'Jeky
+ll.set_timezone'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll.rb:123:in 'bloc
+k in Jekyll.configura
+tion'
+	from <internal:kerne
+l>:91:in 'Kernel#tap'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll.rb:122:in 'Jeky
+ll.configuration'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/command.rb:44:i
+n 'Jekyll::Command.co
+nfiguration_from_opti
+ons'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/commands/build.
+rb:29:in 'Jekyll::Com
+mands::Build.process'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/command.rb:91:i
+n 'block in Jekyll::C
+ommand.process_with_g
+raceful_fail'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/command.rb:91:i
+n 'Array#each'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/command.rb:91:i
+n 'Jekyll::Command.pr
+ocess_with_graceful_f
+ail'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/lib/j
+ekyll/commands/build.
+rb:18:in 'block (2 le
+vels) in Jekyll::Comm
+ands::Build.init_with
+_program'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/mercenary-0.4.0/li
+b/mercenary/command.r
+b:221:in 'block in Me
+rcenary::Command#exec
+ute'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/mercenary-0.4.0/li
+b/mercenary/command.r
+b:221:in 'Array#each'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/mercenary-0.4.0/li
+b/mercenary/command.r
+b:221:in 'Mercenary::
+Command#execute'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/mercenary-0.4.0/li
+b/mercenary/program.r
+b:44:in 'Mercenary::P
+rogram#go'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/mercenary-0.4.0/li
+b/mercenary.rb:21:in 
+'Mercenary.program'
+	from D:/Ruby34-x64/l
+ib/ruby/gems/3.4.0/ge
+ms/jekyll-4.4.1/exe/j
+ekyll:15:in '<top (re
+quired)>'
+	from D:/Ruby34-x64/b
+in/jekyll:25:in 'Kern
+el#load'
+	from D:/Ruby34-x64/b
+in/jekyll:25:in '<mai
+n>'

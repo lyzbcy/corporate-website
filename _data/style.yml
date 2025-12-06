@@ -1,7 +1,7 @@
 #Color Customization
-highlight: "#F5D061"  # 奶油芥末黄（主黄）
-white: "#FAFAF5"      # 柔质米白
-black: "#333333"      # 中性深灰
+highlight: "#D4AF37"  # 奢华金
+white: "#F5F5F7"      # 高级灰白
+black: "#1D1D1F"      # 苹果黑
 
 #Image Customization
 header-image: "../img/header.png"
@@ -12,18 +12,15 @@ contact-image: "../img/contact.png"
 # Add custom fonts
 fonts_urls:
     - "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-    - "https://fonts.googleapis.com/css?family=Montserrat:400,700"
-    - "https://fonts.googleapis.com/css?family=Kaushan+Script"
-    - "https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic"
-    - "https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700"
+    - "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;700&family=Kaushan+Script&display=swap"
 
 # Set custom fonts
 fonts:
-  - name: "Montserrat"
+  - name: "Outfit"
     for: "heading"
   - name: "Kaushan Script"
     for: "script"
-  - name: "Droid Serif"
+  - name: "Outfit" # Use Outfit for serif slots too for consistency, or maybe Keep Droid Serif? Let's go modern.
     for: "serif"
-  - name: "Roboto Slab"
+  - name: "Inter"
     for: "body"
