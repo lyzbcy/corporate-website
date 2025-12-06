@@ -836,6 +836,8 @@ zh: &DEFAULT_ZH
             icon: fab fa-bilibili
           - url: https://github.com/lyzbcy
             icon: fab fa-github
+          - url: https://lyzbcy.github.io/
+            icon: fas fa-globe
 
   contact:
     title: "联系我们"

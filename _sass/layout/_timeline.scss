@@ -135,6 +135,7 @@ $color-team: #D4AF37; // Gold/Yellow
   &.school-item {
     .tree-branch {
       background: $color-school;
+      border-color: $color-school; // For mobile curves
       color: rgba($color-school, 0.5);
     }
 
@@ -160,6 +161,7 @@ $color-team: #D4AF37; // Gold/Yellow
   &.personal-item {
     .tree-branch {
       background: $color-personal;
+      border-color: $color-personal; // For mobile curves
       color: rgba($color-personal, 0.5);
     }
 
@@ -185,6 +187,7 @@ $color-team: #D4AF37; // Gold/Yellow
   &.team-item {
     .tree-branch {
       background: $color-team;
+      border-color: $color-team; // For mobile curves
       color: rgba($color-team, 0.5);
     }
 
@@ -391,14 +394,55 @@ $color-team: #D4AF37; // Gold/Yellow
 
 // Mobile Responsive
 @media (max-width: 768px) {
+  #timeline {
+    padding-bottom: 60px;
+  }
+
+  .tree-container {
+    margin-top: 30px; // Less margin top
+  }
+
+  // Centered Pill Filters
   .tree-filters {
-    position: relative; // Stop absolute positioning on mobile
+    position: relative;
     top: 0;
     left: 0;
     transform: none;
     justify-content: center;
-    margin-bottom: 30px;
-    flex-wrap: wrap; // Allow wrapping
+    margin-bottom: 40px;
+    flex-wrap: nowrap; // Keep on one line if possible
+
+    // Pill Container Look
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px;
+    border-radius: 30px;
+    display: inline-flex;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+
+    .filter-btn {
+      margin: 0 2px;
+      background: transparent; // Clean background
+      border: none;
+
+      &.school:hover,
+      &.active-school,
+      &.personal:hover,
+      &.active-personal,
+      &.team:hover,
+      &.active-team {
+        box-shadow: none; // Remove glow for simpler look
+        // Background color is set in main block, kept
+        color: black; // Ensure contrast
+        border-radius: 20px;
+      }
+
+      &.personal:hover,
+      &.active-personal {
+        color: white;
+      }
+    }
   }
 
   .tree-trunk-bundle {
@@ -407,8 +451,9 @@ $color-team: #D4AF37; // Gold/Yellow
 
   .tree-item {
     width: 100%;
-    padding-left: 60px; // Make room for trunk
-    padding-right: 10px;
+    padding-left: 70px; // More room for curve
+    padding-right: 15px;
+    margin-bottom: 30px; // More breathing room
 
     &.left,
     &.right {
@@ -416,10 +461,21 @@ $color-team: #D4AF37; // Gold/Yellow
       text-align: left;
       flex-direction: row;
 
+      // Curved Branch Implementation
       .tree-branch {
-        left: 20px; // Connect near left bundle
+        left: 20px; // Starts at trunk
         right: auto;
-        width: 40px;
+        width: 35px; // Width of horizontal part
+        height: 40px; // Height of vertical part
+        top: auto;
+        bottom: 50%; // Align bottom to vertical center of card
+
+        background: transparent !important; // Remove straight line fill
+        border-bottom: 3px solid; // Color set by parent specific rules
+        border-left: 3px solid;
+        border-bottom-left-radius: 20px; // The Curve
+        box-shadow: none; // Remove box shadow from line
+        transform: translateY(1.5px); // Fine adjust to snap to center
       }
 
       .tree-content {
