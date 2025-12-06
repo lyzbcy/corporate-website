@@ -39,8 +39,11 @@ header.masthead {
   .container {
     position: relative;
     z-index: 2;
-    padding-left: 5vw; // Offset for asymmtery
-    border-left: 1px solid rgba(white, 0.1);
+    padding-left: 15px;
+    padding-right: 15px;
+    text-align: center; // Center align on mobile
+    // padding-left: 5vw; // Moved to desktop query
+    border-left: none; // Remove border on mobile
   }
 
   .intro-text {
@@ -49,38 +52,40 @@ header.masthead {
     animation: slideRight 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 
     .intro-lead-in {
-      font-size: 24px;
-      font-weight: 400; // Slightly bolder
-      letter-spacing: 2px; // Reduced from 4px for better readability in Chinese
-      margin-bottom: 30px;
-      color: rgba(255, 255, 255, 0.95); // Brighter
-      font-family: "Outfit", "PingFang SC", "Microsoft YaHei", sans-serif; // Consistent font stack
+      font-size: 18px; // Smaller for mobile
+      font-weight: 400;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+      color: rgba(255, 255, 255, 0.95);
+      font-family: "Outfit", "PingFang SC", "Microsoft YaHei", sans-serif;
       text-transform: uppercase;
       display: inline-block;
       position: relative;
-      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); // Cleaner shadow
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 
       &::after {
         content: '';
         display: block;
-        width: 60px;
-        height: 3px; // Thicker line
+        width: 40px; // Smaller line
+        height: 3px;
         background: $primary-yellow;
-        margin-top: 15px;
-        box-shadow: 0 0 10px rgba($primary-yellow, 0.5); // Glow on line
+        margin-top: 10px;
+        margin-left: auto; // Center the line
+        margin-right: auto;
+        box-shadow: 0 0 10px rgba($primary-yellow, 0.5);
       }
     }
 
     .intro-heading {
-      font-size: 80px;
+      font-size: 42px; // Much smaller for mobile (was 80px)
       font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 40px;
+      line-height: 1.2;
+      margin-bottom: 30px;
       color: white;
       text-transform: uppercase;
       font-family: "Outfit", "PingFang SC", "Microsoft YaHei", sans-serif;
       letter-spacing: -1px;
-      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.6);
 
       // Clean White Text (No more tacky gold gradient)
       background: none;
@@ -133,13 +138,31 @@ header.masthead {
 
 @media (min-width: 768px) {
   header.masthead {
+    text-align: left; // Restore alignment
+
+    .container {
+      padding-left: 5vw; // Restore offset
+      text-align: left;
+      border-left: 1px solid rgba(white, 0.1);
+    }
+
     .intro-text {
       .intro-lead-in {
         font-size: 30px;
+        margin-bottom: 30px;
+
+        &::after {
+          width: 60px;
+          margin-left: 0; // Left align line
+          margin-right: 0;
+          margin-top: 15px;
+        }
       }
 
       .intro-heading {
         font-size: 100px; // Even Bigger on Desktop
+        line-height: 1.1;
+        margin-bottom: 40px;
       }
     }
   }

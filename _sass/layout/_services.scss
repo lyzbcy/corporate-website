@@ -68,6 +68,19 @@
   }
 }
 
+@media (max-width: 767px) {
+  #services {
+    .col-md-4 {
+      padding: 30px 15px; // Reduce padding on mobile
+      margin-bottom: 30px;
+    }
+
+    .fa-stack {
+      margin-bottom: 20px;
+    }
+  }
+}
+
 .service-heading {
   margin: 15px 0;
   text-transform: none;

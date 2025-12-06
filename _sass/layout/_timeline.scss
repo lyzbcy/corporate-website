@@ -391,6 +391,16 @@ $color-team: #D4AF37; // Gold/Yellow
 
 // Mobile Responsive
 @media (max-width: 768px) {
+  .tree-filters {
+    position: relative; // Stop absolute positioning on mobile
+    top: 0;
+    left: 0;
+    transform: none;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap; // Allow wrapping
+  }
+
   .tree-trunk-bundle {
     left: 20px;
   }

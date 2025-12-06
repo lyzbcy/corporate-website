@@ -27,6 +27,7 @@
 
   .navbar-brand {
     color: $primary-yellow;
+    font-size: 1.25em; // Smaller on mobile (was implied large)
     @include script-font;
     font-weight: 600;
     transition: all 0.3s ease;

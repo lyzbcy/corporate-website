@@ -86,3 +86,24 @@
     }
   }
 }
+
+@media (min-width: 992px) {
+  .team-member {
+    margin-bottom: 50px;
+    padding: 40px 20px;
+
+    img {
+      width: 230px;
+      height: 230px;
+    }
+
+    h4 {
+      margin-top: 30px;
+      font-size: 1.5rem;
+    }
+
+    &:hover {
+      transform: translateY(-15px); // Larger hover on desktop
+    }
+  }
+}
