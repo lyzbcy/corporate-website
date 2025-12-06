@@ -1,146 +1,141 @@
 // Styling for the masthead
 header.masthead {
-  text-align: center;
-  color: white; // Changed from #333333 to white
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(29, 29, 31, 0.8) 100%),
+  text-align: left; // Asymmetric layout
+  color: white;
+  background: linear-gradient(135deg, rgba(black, 0.4) 0%, rgba(black, 0.7) 100%),
   url("#{$header-image}");
   background-repeat: no-repeat;
-  background-attachment: scroll;
+  background-attachment: fixed; // Parallax
   background-position: center center;
   background-size: cover;
   position: relative;
   overflow: hidden;
+  height: 100vh; // Full Screen
+  display: flex;
+  align-items: center;
 
-  // 添加动态背景效果 - 金色微光
+  // Cinematic Overlay
   &::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at center, rgba(red($primary-yellow), green($primary-yellow), blue($primary-yellow), 0.15) 0%, transparent 70%);
-    animation: glowShift 10s ease-in-out infinite alternate;
+    inset: 0;
+    background: radial-gradient(circle at 70% 30%, rgba(red($primary-yellow), green($primary-yellow), blue($primary-yellow), 0.15), transparent 70%);
     z-index: 1;
+  }
+
+  // Vignette
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, transparent 50%, black 150%);
+    z-index: 1;
+    pointer-events: none;
   }
 
   .container {
     position: relative;
     z-index: 2;
+    padding-left: 5vw; // Offset for asymmtery
+    border-left: 1px solid rgba(white, 0.1);
   }
 
   .intro-text {
-    padding-top: 150px;
-    padding-bottom: 100px;
-    animation: fadeInUp 1s ease-out;
+    padding-top: 0;
+    padding-bottom: 0;
+    animation: slideRight 1.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 
     .intro-lead-in {
-      font-size: 24px; // Increased slightly
-      font-style: normal; // Remove italic for modern look
-      font-weight: 300;
-      line-height: normal;
-      margin-bottom: 25px;
-      color: rgba(255, 255, 255, 0.9);
-      @include heading-font; // Switch to Sans Serif (Outfit/Inter)
-      letter-spacing: 1px;
-      animation: fadeIn 1.2s ease-out;
+      font-size: 24px;
+      font-weight: 400; // Slightly bolder
+      letter-spacing: 2px; // Reduced from 4px for better readability in Chinese
+      margin-bottom: 30px;
+      color: rgba(255, 255, 255, 0.95); // Brighter
+      font-family: "Outfit", "PingFang SC", "Microsoft YaHei", sans-serif; // Consistent font stack
+      text-transform: uppercase;
+      display: inline-block;
+      position: relative;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); // Cleaner shadow
+
+      &::after {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 3px; // Thicker line
+        background: $primary-yellow;
+        margin-top: 15px;
+        box-shadow: 0 0 10px rgba($primary-yellow, 0.5); // Glow on line
+      }
     }
 
     .intro-heading {
-      font-size: 60px; // Larger
-      font-weight: 700;
-      line-height: 1.2;
-      margin-bottom: 30px;
-      color: $primary-yellow;
+      font-size: 80px;
+      font-weight: 900; // Extra Bold
+      line-height: 1.1;
+      margin-bottom: 40px;
+      color: white;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      @include heading-font;
-      animation: fadeIn 1.4s ease-out;
-      background: linear-gradient(to right, $primary-yellow, white, $primary-yellow);
+      font-family: "Outfit", "PingFang SC", "Microsoft YaHei", sans-serif;
+      letter-spacing: -1px;
+      // Remove muddy text-shadow, use subtle drop shadow or clean outline
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+
+      // Clean Gradient Text
+      background: linear-gradient(to right, white 30%, $primary-yellow 100%);
       -webkit-background-clip: text;
-      background-clip: text;
       -webkit-text-fill-color: transparent;
-      background-size: 200% auto;
-      animation: shine 5s linear infinite; // Shine effect
+
+      span {
+        color: $primary-yellow;
+        -webkit-text-fill-color: $primary-yellow;
+      }
+    }
+
+    .btn-xl {
+      border-radius: 50px;
+      padding: 20px 60px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      // Solid Gold Button
+      background: linear-gradient(135deg, $primary-yellow 0%, $light-gold 100%);
+      border: none;
+      color: $black;
+      box-shadow: 0 10px 30px rgba(red($primary-yellow), green($primary-yellow), blue($primary-yellow), 0.3);
+
+      &:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 20px 50px rgba(red($primary-yellow), green($primary-yellow), blue($primary-yellow), 0.5);
+        color: $black; // Ensure text remains legible
+        background: linear-gradient(135deg, lighten($primary-yellow, 5%) 0%, lighten($light-gold, 5%) 100%);
+      }
     }
   }
 }
 
-@keyframes glowShift {
-  0% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-
-  100% {
-    opacity: 0.8;
-    transform: scale(1.1);
-  }
-}
-
-@keyframes shine {
-  to {
-    background-position: 200% center;
-  }
-}
-
-@keyframes gradientShift {
-
-  0%,
-  100% {
-    opacity: 0.5;
-  }
-
-  50% {
-    opacity: 0.8;
-  }
-}
-
-@keyframes fadeIn {
+@keyframes slideRight {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateX(-50px);
+    filter: blur(10px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
+    filter: blur(0);
   }
 }
 
 @media (min-width: 768px) {
   header.masthead {
     .intro-text {
-      padding-top: 300px;
-      padding-bottom: 200px;
-
       .intro-lead-in {
-        font-size: 40px;
-        font-style: italic;
-        line-height: 40px;
-        margin-bottom: 25px;
-        @include serif-font;
+        font-size: 30px;
       }
 
       .intro-heading {
-        font-size: 75px;
-        font-weight: 700;
-        line-height: 75px;
-        margin-bottom: 50px;
-        @include heading-font;
+        font-size: 100px; // Even Bigger on Desktop
       }
     }
   }

@@ -4,8 +4,8 @@ white: "#F5F5F7"      # 高级灰白
 black: "#1D1D1F"      # 苹果黑
 
 #Image Customization
-header-image: "../img/header.png"
-contact-image: "../img/contact.png"
+header-image: "../img/header-new.png"
+contact-image: "../img/contact-new.png"
 #Font Awesome icon for portfolio grid when an item is hovered over
 #portfolio-icon: fas fa-expand-arrows-alt fa-3x #default: fas fa-plus fa-3x
 

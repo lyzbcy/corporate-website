@@ -98,35 +98,43 @@
 
 @media (min-width: 992px) {
   #mainNav {
-    padding-top: 25px;
-    padding-bottom: 25px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     border: none;
-    background-color: transparent; // Transparent initially on desktop
-    box-shadow: none;
+    background-color: transparent;
+    transition: all 0.4s ease;
 
+    // Default State (Transparent on Hero)
     .navbar-brand {
       font-size: 1.75em;
     }
 
     .navbar-nav .nav-item .nav-link {
       padding: 1.1em 1em !important;
-      color: rgba(255, 255, 255, 0.9); // Ensure readable on hero
+      color: rgba(255, 255, 255, 0.9);
     }
 
+    // Floating Capsule State (on Scroll)
     &.navbar-shrink {
-      padding-top: 0;
-      padding-bottom: 0;
-      background-color: rgba($black, 0.9); // Solid dark on scroll
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      padding: 10px 30px;
+      top: 20px; // Float triggers spacing from top
+      width: 90%; // Not full width
+      left: 5%;
+      right: 5%;
+      border-radius: 50px; // Capsule shape
+
+      background-color: rgba($black, 0.8); // Semi-transparent dark
+      backdrop-filter: blur(15px); // Strong blur
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); // Floating shadow
+      border: 1px solid rgba(255, 255, 255, 0.1); // Subtle border
 
       .navbar-brand {
         font-size: 1.25em;
-        padding: 12px 0;
+        padding: 8px 0;
       }
 
       .navbar-nav .nav-item .nav-link {
-        color: rgba(255, 255, 255, 0.9);
+        color: rgba(255, 255, 255, 0.95);
 
         &.active,
         &:hover {

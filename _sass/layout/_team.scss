@@ -2,80 +2,73 @@
 .team-member {
   margin-bottom: 50px;
   text-align: center;
-  padding: 30px 20px; // More padding
-  border-radius: 16px; // Smoother corners
-  transition: all 0.4s ease;
-  background: white;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); // Subtle start
-  border: 1px solid rgba(0, 0, 0, 0.02);
+  padding: 40px 20px;
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // Bouncy transition
+  background: white; // Clean white base
+  // Remove borders for cleaner look
+  border: none;
+  position: relative;
+  overflow: hidden; // For glow effects
+
+  // Initial state: Clean and flat-ish
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 50px rgba(red($primary-yellow), green($primary-yellow), blue($primary-yellow), 0.2); // Golden shadow glow
-    border-color: rgba(red($primary-yellow), green($primary-yellow), blue($primary-yellow), 0.3);
+    transform: translateY(-15px); // Lift higher
+    box-shadow: 0 30px 60px rgba(red($primary-yellow), green($primary-yellow), blue($primary-yellow), 0.15); // Soft golden glow
+    z-index: 10;
 
     img {
-      transform: scale(1.05);
+      transform: scale(1.08) rotate(2deg); // Slight joyful rotation
       border-color: $primary-yellow;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    h4 {
+      color: $primary-yellow;
     }
   }
 
   img {
-    width: 225px;
-    height: 225px;
-    border: 7px solid rgba($black, 0.05); // Subtle border initially
-    border-radius: 50%;
-    transition: all 0.4s ease;
+    width: 230px;
+    height: 230px;
+    border: 5px solid white; // White border to separate from bg
+    border-radius: 35%; // Squircle / Soft Hexagon feel
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
     object-fit: cover;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.5s ease;
   }
 
   h4 {
-    margin-top: 25px;
+    margin-top: 30px;
     margin-bottom: 5px;
     text-transform: none;
     color: $black;
-    font-weight: 700;
+    font-weight: 800; // Extra bold
+    letter-spacing: -0.5px;
     transition: color 0.3s ease;
-    letter-spacing: 0.5px;
-  }
-
-  &:hover h4 {
-    color: $primary-yellow;
+    font-size: 1.5rem;
   }
 
   p {
     margin-top: 0;
     color: $gray-600;
-    font-size: 14px;
-    @include heading-font;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Outfit", sans-serif;
   }
 
   ul.social-buttons {
-    margin-top: 20px;
+    margin-top: 25px;
 
-    li.list-inline-item {
-      a {
-        display: block;
-        width: 48px;
-        height: 48px;
-        line-height: 48px;
-        text-align: center;
-        border-radius: 50%;
-        background: $gray-100;
-        color: $gray-700;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    li.list-inline-item a {
+      background: rgba($black, 0.05);
+      color: $black;
 
-        &:hover {
-          background: linear-gradient(135deg, $primary-yellow, $light-gold);
-          color: white;
-          transform: translateY(-5px) rotate(360deg); // Fun spin on hover
-          box-shadow: 0 6px 15px rgba(red($primary-yellow), green($primary-yellow), blue($primary-yellow), 0.4);
-        }
+      &:hover {
+        background: $primary-yellow;
+        color: white;
+        transform: translateY(-5px) scale(1.1);
       }
     }
   }
