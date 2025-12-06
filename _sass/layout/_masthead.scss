@@ -23,12 +23,15 @@ header.masthead {
     z-index: 1;
   }
 
-  // Vignette
+  // Vignette & Smooth Gradient Transition
   &::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle, transparent 50%, black 150%);
+    // Radial vignette + Linear gradient at bottom to fade into next section
+    background:
+      radial-gradient(circle, transparent 50%, black 150%),
+      linear-gradient(to bottom, transparent 80%, $black 100%);
     z-index: 1;
     pointer-events: none;
   }
@@ -70,44 +73,45 @@ header.masthead {
 
     .intro-heading {
       font-size: 80px;
-      font-weight: 900; // Extra Bold
+      font-weight: 800;
       line-height: 1.1;
       margin-bottom: 40px;
       color: white;
       text-transform: uppercase;
       font-family: "Outfit", "PingFang SC", "Microsoft YaHei", sans-serif;
       letter-spacing: -1px;
-      // Remove muddy text-shadow, use subtle drop shadow or clean outline
-      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      text-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 
-      // Clean Gradient Text
-      background: linear-gradient(to right, white 30%, $primary-yellow 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      // Clean White Text (No more tacky gold gradient)
+      background: none;
+      -webkit-background-clip: border-box;
+      -webkit-text-fill-color: white;
 
       span {
-        color: $primary-yellow;
-        -webkit-text-fill-color: $primary-yellow;
+        color: white; // Keep span white too, or subtle gold if really needed. Let's start with white.
+        -webkit-text-fill-color: white;
       }
     }
 
     .btn-xl {
-      border-radius: 50px;
-      padding: 20px 60px;
-      font-size: 18px;
-      font-weight: 700;
+      border-radius: 5px; // Minimalist
+      padding: 18px 50px;
+      font-size: 16px;
+      font-weight: 600;
       letter-spacing: 2px;
-      // Solid Gold Button
-      background: linear-gradient(135deg, $primary-yellow 0%, $light-gold 100%);
-      border: none;
-      color: $black;
-      box-shadow: 0 10px 30px rgba(red($primary-yellow), green($primary-yellow), blue($primary-yellow), 0.3);
+      // Glass / Platinum Button
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: white;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 
       &:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 20px 50px rgba(red($primary-yellow), green($primary-yellow), blue($primary-yellow), 0.5);
-        color: $black; // Ensure text remains legible
-        background: linear-gradient(135deg, lighten($primary-yellow, 5%) 0%, lighten($light-gold, 5%) 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+        color: $black;
+        background: white;
+        border-color: white;
       }
     }
   }

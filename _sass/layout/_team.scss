@@ -1,40 +1,53 @@
-// Styling for the team section
+// Styling for the team section (Dark Luxury)
+#team {
+  background-color: #0F0F11; // Very dark charcoal
+
+  .section-heading {
+    color: white;
+  }
+
+  .section-subheading {
+    color: #ADB5BD;
+  }
+}
+
 .team-member {
   margin-bottom: 50px;
   text-align: center;
   padding: 40px 20px;
   border-radius: 20px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); // Bouncy transition
-  background: white; // Clean white base
-  // Remove borders for cleaner look
-  border: none;
-  position: relative;
-  overflow: hidden; // For glow effects
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-  // Initial state: Clean and flat-ish
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  // Dark Glass Card
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 
   &:hover {
-    transform: translateY(-15px); // Lift higher
-    box-shadow: 0 30px 60px rgba(red($primary-yellow), green($primary-yellow), blue($primary-yellow), 0.15); // Soft golden glow
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     z-index: 10;
+    background: rgba(255, 255, 255, 0.08); // Lighter glass
+    border-color: rgba(255, 255, 255, 0.2);
 
     img {
-      transform: scale(1.08) rotate(2deg); // Slight joyful rotation
-      border-color: $primary-yellow;
+      transform: scale(1.08) rotate(2deg);
+      border-color: #D4AF37; // Gold Border
     }
 
     h4 {
-      color: $primary-yellow;
+      color: white; // Keep white
     }
   }
 
   img {
     width: 230px;
     height: 230px;
-    border: 5px solid white; // White border to separate from bg
-    border-radius: 35%; // Squircle / Soft Hexagon feel
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 35%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     object-fit: cover;
     transition: all 0.5s ease;
   }
@@ -43,8 +56,8 @@
     margin-top: 30px;
     margin-bottom: 5px;
     text-transform: none;
-    color: $black;
-    font-weight: 800; // Extra bold
+    color: white;
+    font-weight: 800;
     letter-spacing: -0.5px;
     transition: color 0.3s ease;
     font-size: 1.5rem;
@@ -52,7 +65,7 @@
 
   p {
     margin-top: 0;
-    color: $gray-600;
+    color: #ADB5BD;
     font-size: 15px;
     font-weight: 500;
     font-family: "Outfit", sans-serif;
@@ -62,12 +75,12 @@
     margin-top: 25px;
 
     li.list-inline-item a {
-      background: rgba($black, 0.05);
-      color: $black;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
 
       &:hover {
-        background: $primary-yellow;
-        color: white;
+        background: white;
+        color: #1D1D1F;
         transform: translateY(-5px) scale(1.1);
       }
     }

@@ -1,7 +1,15 @@
 // Styling for the portfolio section
 #portfolio {
-  background-color: $white;
+  background-color: $black; // Dark Background
   padding-bottom: 50px;
+
+  .section-heading {
+    color: white;
+  }
+
+  .section-subheading {
+    color: $gray-500;
+  }
 
   .portfolio-grid-container {
     display: grid;
@@ -133,10 +141,12 @@
       left: 20px;
       z-index: 3;
       pointer-events: none; // Let clicks pass through
-      background: white;
+      background: rgba(0, 0, 0, 0.8); // Dark Glass
+      backdrop-filter: blur(10px);
       padding: 15px 25px;
       border-radius: 10px;
-      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       opacity: 0;
       transform: translateY(20px);
       transition: all 0.4s ease;
@@ -146,7 +156,7 @@
         text-transform: none;
         font-family: "Outfit", sans-serif;
         font-weight: 700;
-        color: $black;
+        color: white; // White text
       }
 
       p {
@@ -154,6 +164,7 @@
         font-family: "Inter", sans-serif;
         font-size: 14px;
         font-style: normal;
+        color: $gray-400; // Light gray text
       }
     }
 
