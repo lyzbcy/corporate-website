@@ -1,121 +1,47 @@
-<!-- About -->
-{% if site.locale and site.locale != "" and site.locale != nil %}
-  <section class="bg-light page-section" id="{{ site.data.sitetext[site.locale].timeline.section | default: "about" }}">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">{{ site.data.sitetext[site.locale].timeline.title | markdownify | default: "About" }}</h2>
-          <h3 class="section-subheading text-muted">{{ site.data.sitetext[site.locale].timeline.text | default: "timeline"}}</h3>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-12">
-          <ul class="timeline">
-      {%- assign align = site.data.sitetext[site.locale].timeline.start_align -%}
-      {%- for event in site.data.sitetext[site.locale].timeline.events -%}
-            {%- if align == "right" -%}
-              {%- if event.align and event.align == "left" -%}
-                {%- assign align = "right" -%}
-                <li>
-              {%- else -%}
-                {%- assign align = "left" %}
-                <li class="timeline-inverted">
-              {% endif %}
-            {% else %}
-              {%- if event.align and event.align == "right" -%}
-                {%- assign align = "left" -%}
-                <li class="timeline-inverted">
-              {%- else -%}
-                {%- assign align = "right" %}
-                <li>
-              {% endif %}
-            {%- endif -%}
-              <div class="timeline-image">
-                <img class="rounded-circle img-fluid" src="{{ site.baseurl }}/{{ event.image }}" alt="{{ event.alt | default: ""}}">
-              </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h4>{{ event.year | markdownify }}</h4>
-                  <h4 class="subheading">{{ event.title }}</h4>
-                </div>
-                <div class="timeline-body">
-                  <div class="text-muted">{{ event.desc | markdownify }}</div>
-                </div>
-              </div>
-            </li>
-		  {% endfor %}	
-            
-		  {% if site.data.sitetext[site.locale].timeline.end %}	
-			<li class="timeline-inverted">
-              <div class="timeline-image">
-                <h4>{{ site.data.sitetext[site.locale].timeline.end }}</h4>
-              </div>
-            </li>
-		  {% endif %}
-
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-{% else %}
-<section class="bg-light page-section" id="{{ site.data.sitetext.timeline.section | default: "about" }}">
+<!-- Tree of Works Timeline (3-Track) -->
+<section class="page-section" id="timeline">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="section-heading text-uppercase">{{ site.data.sitetext.timeline.title | markdownify | default: "About" }}</h2>
-        <h3 class="section-subheading text-muted">{{ site.data.sitetext.timeline.text | default: "timeline"}}</h3>
+        <h2 class="section-heading text-uppercase">作品时间树</h2>
+        <h3 class="section-subheading text-muted">我们的创意发展历程</h3>
       </div>
     </div>
-    <div class="row">
-      <div class="col-lg-12">
-        <ul class="timeline">
-    {%- assign align = site.data.sitetext.timeline.start_align -%}
-    {%- for event in site.data.sitetext.timeline.events -%}
-          {%- if align == "right" -%}
-            {%- if event.align and event.align == "left" -%}
-              {%- assign align = "right" -%}
-              <li>
-            {%- else -%}
-              {%- assign align = "left" %}
-              <li class="timeline-inverted">
-            {% endif %}
-          {% else %}
-            {%- if event.align and event.align == "right" -%}
-              {%- assign align = "left" -%}
-              <li class="timeline-inverted">
-            {%- else -%}
-              {%- assign align = "right" %}
-              <li>
-            {% endif %}
-          {%- endif -%}
-            <div class="timeline-image">
-              <img class="rounded-circle img-fluid" src="{{ event.image }}" alt="{{ event.alt | default: ""}}">
-            </div>
-            <div class="timeline-panel">
-              <div class="timeline-heading">
-                <h4>{{ event.year | markdownify }}</h4>
-                <h4 class="subheading">{{ event.title }}</h4>
-              </div>
-              <div class="timeline-body">
-                <div class="text-muted">{{ event.desc | markdownify }}</div>
-              </div>
-            </div>
-          </li>
-    {% endfor %}	
-          
-    {% if site.data.sitetext.timeline.end %}	
-    <li class="timeline-inverted">
-            <div class="timeline-image">
-              <h4>{{ site.data.sitetext.timeline.end }}</h4>
-            </div>
-          </li>
-    {% endif %}
 
-        </ul>
+    <div class="tree-container">
+      <!-- Bundled Trunk (3 Lines) -->
+      <div class="tree-trunk-bundle">
+        <div class="trunk-line school"></div>
+        <div class="trunk-line personal"></div>
+        <div class="trunk-line team"></div>
+      </div>
+
+      {% for project in site.portfolio %}
+      {% assign remainder = forloop.index | modulo: 2 %}
+      {% assign catIndex = forloop.index0 | modulo: 3 %}
+      {% if catIndex == 0 %}{% assign category = "school" %}{% assign catText = "学校作品" %}{% endif %}
+      {% if catIndex == 1 %}{% assign category = "personal" %}{% assign catText = "个人作品" %}{% endif %}
+      {% if catIndex == 2 %}{% assign category = "team" %}{% assign catText = "团队作品" %}{% endif %}
+
+      <div class="tree-item {% if remainder == 0 %}right{% else %}left{% endif %} {{ category }}-item">
+        <div class="tree-branch"></div>
+        <div class="tree-content">
+          <div class="tree-img-wrapper">
+            <img src="{{ site.baseurl }}/{{ project.caption.thumbnail }}" alt="{{ project.caption.title }}">
+          </div>
+          <div class="tree-text">
+            <h4>{{ project.caption.title }}</h4>
+            <span class="project-tag">{{ catText }}</span>
+            <p>{{ project.caption.subtitle }}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!-- Growth Ending Node -->
+      <div class="tree-end-node">
+        <span>未来</span>
       </div>
     </div>
   </div>
 </section>
-{% endif %}
-<!-- End About -->

@@ -1,192 +1,312 @@
-// Styling for the timeline section (Dark Luxury)
-#about {
-  background-color: $black; // Dark Background
+// Tree of Works Timeline Styling (Three-Track Version)
+#timeline {
+  background-color: #0F0F11; // Dark Background
   color: white;
+  padding-bottom: 100px;
 
   .section-heading {
     color: white;
   }
 
   .section-subheading {
-    color: $gray-500;
+    color: #ADB5BD;
   }
 }
 
-.timeline {
+$color-school: #00f260; // Cyan/Green
+$color-personal: #ff00cc; // Pink/Magenta
+$color-team: #D4AF37; // Gold/Yellow
+
+.tree-container {
   position: relative;
-  padding: 0;
-  list-style: none;
+  max-width: 1000px;
+  margin: 50px auto 0;
+  padding: 20px 0;
+}
 
-  &:before {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 40px;
-    width: 2px;
-    margin-left: -1.5px;
-    content: "";
-    background-color: rgba(255, 255, 255, 0.1); // Subtle line
-  }
+// 1. Bundled Trunk (Container)
+.tree-trunk-bundle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 4px; // Gap between bundled lines
+  z-index: 1;
 
-  >li {
+  // The three individual lines
+  .trunk-line {
+    width: 4px;
+    height: 100%;
+    border-radius: 4px;
     position: relative;
-    min-height: 50px;
-    margin-bottom: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 
-    &:after,
-    &:before {
-      display: table;
-      content: " ";
+    &.school {
+      background: linear-gradient(to bottom, lighten($color-school, 20%), $color-school);
+      box-shadow: 0 0 8px rgba($color-school, 0.4);
     }
 
-    &:after {
-      clear: both;
+    &.personal {
+      background: linear-gradient(to bottom, lighten($color-personal, 20%), $color-personal);
+      box-shadow: 0 0 8px rgba($color-personal, 0.4);
     }
 
-    .timeline-panel {
-      position: relative;
-      float: right;
-      width: 100%;
-      padding: 0 20px 0 100px;
-      text-align: left;
+    &.team {
+      background: linear-gradient(to bottom, lighten($color-team, 20%), $color-team);
+      box-shadow: 0 0 8px rgba($color-team, 0.4);
+    }
+  }
+}
 
-      .timeline-heading {
-        h4 {
-          color: white;
-        }
+// 2. Tree Item Wrapper
+.tree-item {
+  position: relative;
+  width: 50%;
+  padding: 20px 60px; // More padding to clear the 3-line trunk
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out forwards;
 
-        .subheading {
-          color: $primary-yellow;
-        }
-      }
+  // Universal Branch Stick
+  .tree-branch {
+    position: absolute;
+    top: 50%;
+    height: 3px;
+    box-shadow: 0 0 5px currentColor;
+  }
 
-      .timeline-body>p {
-        color: $gray-400;
-      }
+  // --- Category Specific Styling ---
+
+  &.school-item {
+    .tree-branch {
+      background: $color-school;
+      color: rgba($color-school, 0.5);
     }
 
-    .timeline-image {
-      position: absolute;
-      z-index: 100;
+    .tree-content {
+      border-color: rgba($color-school, 0.3);
+    }
+
+    .tree-content:hover {
+      border-color: $color-school;
+      background: rgba($color-school, 0.1);
+    }
+
+    .tree-img-wrapper {
+      border-color: $color-school;
+    }
+
+    .project-tag {
+      background: $color-school;
+      color: #000;
+    }
+  }
+
+  &.personal-item {
+    .tree-branch {
+      background: $color-personal;
+      color: rgba($color-personal, 0.5);
+    }
+
+    .tree-content {
+      border-color: rgba($color-personal, 0.3);
+    }
+
+    .tree-content:hover {
+      border-color: $color-personal;
+      background: rgba($color-personal, 0.1);
+    }
+
+    .tree-img-wrapper {
+      border-color: $color-personal;
+    }
+
+    .project-tag {
+      background: $color-personal;
+      color: white;
+    }
+  }
+
+  &.team-item {
+    .tree-branch {
+      background: $color-team;
+      color: rgba($color-team, 0.5);
+    }
+
+    .tree-content {
+      border-color: rgba($color-team, 0.3);
+    }
+
+    .tree-content:hover {
+      border-color: $color-team;
+      background: rgba($color-team, 0.1);
+    }
+
+    .tree-img-wrapper {
+      border-color: $color-team;
+    }
+
+    .project-tag {
+      background: $color-team;
+      color: #000;
+    }
+  }
+
+
+  // --- Alignment Specifics (Left/Right) ---
+
+  &.left {
+    left: 0;
+    text-align: right;
+    flex-direction: row-reverse;
+
+    .tree-branch {
+      right: 14px; // Connect exactly to the bundle
+      width: 46px;
+    }
+  }
+
+  &.right {
+    left: 50%;
+    text-align: left;
+
+    .tree-branch {
+      left: 14px;
+      width: 46px;
+    }
+  }
+}
+
+// 3. Tree Content Card
+.tree-content {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  width: 100%;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+
+    .tree-img-wrapper img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.tree-img-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 2px solid white; // Default fallback
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+}
+
+.tree-text {
+  flex-grow: 1;
+  padding: 0 20px;
+
+  h4 {
+    margin: 0;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: "Outfit", sans-serif;
+  }
+
+  .project-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    margin: 5px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #ADB5BD;
+  }
+}
+
+// End Node
+.tree-end-node {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  background: #0F0F11;
+  border: 3px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+
+  span {
+    color: white;
+    font-family: "Microsoft YaHei", sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}
+
+// Mobile Responsive
+@media (max-width: 768px) {
+  .tree-trunk-bundle {
+    left: 20px;
+  }
+
+  .tree-item {
+    width: 100%;
+    padding-left: 60px; // Make room for trunk
+    padding-right: 10px;
+
+    &.left,
+    &.right {
       left: 0;
-      width: 80px;
-      height: 80px;
-      margin-left: 0;
-      text-align: center;
-      color: $white;
-      border: 5px solid rgba(255, 255, 255, 0.1); // Dark border
-      border-radius: 100%;
-      background-color: $black; // Dark bg
-
-      h4 {
-        font-size: 10px;
-        line-height: 14px;
-        margin-top: 12px;
-        color: $gray-300;
-      }
-    }
-
-    &.timeline-inverted>.timeline-panel {
-      float: right;
-      padding: 0 20px 0 100px;
       text-align: left;
-    }
+      flex-direction: row;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-
-@media (min-width: 768px) {
-  .timeline {
-    &:before {
-      left: 50%;
-    }
-
-    >li {
-      min-height: 100px;
-      margin-bottom: 100px;
-
-      .timeline-panel {
-        float: left;
-        width: 41%;
-        padding: 0 20px 20px 30px;
-        text-align: right;
+      .tree-branch {
+        left: 20px; // Connect near left bundle
+        right: auto;
+        width: 40px;
       }
 
-      .timeline-image {
-        left: 50%;
-        width: 100px;
-        height: 100px;
-        margin-left: -50px;
-
-        h4 {
-          font-size: 13px;
-          line-height: 18px;
-          margin-top: 16px;
-        }
-      }
-
-      &.timeline-inverted>.timeline-panel {
-        float: right;
-        padding: 0 30px 20px 20px;
-        text-align: left;
+      .tree-content {
+        flex-direction: row;
       }
     }
   }
-}
 
-@media (min-width: 992px) {
-  .timeline {
-    >li {
-      min-height: 150px;
-
-      .timeline-panel {
-        padding: 0 20px 20px;
-      }
-
-      .timeline-image {
-        width: 150px;
-        height: 150px;
-        margin-left: -75px;
-
-        h4 {
-          font-size: 18px;
-          line-height: 26px;
-          margin-top: 30px;
-        }
-      }
-
-      &.timeline-inverted>.timeline-panel {
-        padding: 0 20px 20px;
-      }
-    }
-  }
-}
-
-@media (min-width: 1200px) {
-  .timeline {
-    >li {
-      min-height: 170px;
-
-      .timeline-panel {
-        padding: 0 20px 20px 100px;
-      }
-
-      .timeline-image {
-        width: 170px;
-        height: 170px;
-        margin-left: -85px;
-
-        h4 {
-          margin-top: 40px;
-        }
-      }
-
-      &.timeline-inverted>.timeline-panel {
-        padding: 0 100px 20px 20px;
-      }
-    }
+  .tree-end-node {
+    left: 20px;
   }
 }
