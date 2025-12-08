@@ -340,9 +340,9 @@ de-LU: #German (Luxembourg)
 # -----------------
 zh: &DEFAULT_ZH
   nav:
-    - title: "作品集"
+    - title: "精选作品"
       section: portfolio
-    - title: "时间线"
+    - title: "作品时间树"
       section: timeline
     - title: "关于我们"
       section: team

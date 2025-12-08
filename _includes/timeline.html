@@ -57,10 +57,19 @@
       {% assign sorted_projects = site.portfolio | sort: 'date' | reverse %}
       {% for project in sorted_projects %}
       {% assign remainder = forloop.index | modulo: 2 %}
-      {% assign catIndex = forloop.index0 | modulo: 3 %}
-      {% if catIndex == 0 %}{% assign category = "school" %}{% assign catText = "学校作品" %}{% endif %}
-      {% if catIndex == 1 %}{% assign category = "personal" %}{% assign catText = "个人作品" %}{% endif %}
-      {% if catIndex == 2 %}{% assign category = "team" %}{% assign catText = "团队作品" %}{% endif %}
+      {% if project.category == 'school' %}
+      {% assign category = "school" %}
+      {% assign catText = "学校作品" %}
+      {% elsif project.category == 'personal' %}
+      {% assign category = "personal" %}
+      {% assign catText = "个人作品" %}
+      {% elsif project.category == 'team' %}
+      {% assign category = "team" %}
+      {% assign catText = "团队作品" %}
+      {% else %}
+      {% assign category = "personal" %}
+      {% assign catText = "个人作品" %}
+      {% endif %}
 
       <div class="tree-item {% if remainder == 0 %}right{% else %}left{% endif %} {{ category }}-item">
         <div class="tree-branch">

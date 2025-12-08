@@ -760,7 +760,7 @@ zh: &DEFAULT_ZH
         icon: fab fa-markdown
 
   portfolio:
-    title: "作品集"
+    title: "精选作品"
     text: "我们的精选作品展示"
     section: portfolio
     closebutton: "关闭项目"
