@@ -12,13 +12,20 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 mx-auto">
+          <div class="col-lg-11 mx-auto">
             <div class="modal-body">
               <!-- Project Details Go Here -->
               <h2 class="text-uppercase">{{ project.title }}</h2>
               <p class="item-intro text-muted">{{ project.subtitle }}</p>
+              {% if project.embed_url %}
+              <div class="mb-4" style="width: 100%; overflow: hidden;">
+                <iframe src="{{ project.embed_url }}" allowfullscreen
+                  style="width: 100%; height: 700px; border: 1px solid #ddd; border-radius: 8px;"></iframe>
+              </div>
+              {% else %}
               <img class="img-fluid d-block mx-auto" src="{{ site.baseurl }}/{{ project.image }}"
                 alt="{{ project.alt }}" />
+              {% endif %}
               <div class="project-content text-left mt-4 mb-4">
                 {{ project.content }}
               </div>
@@ -46,13 +53,20 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-lg-8 mx-auto">
+          <div class="col-lg-11 mx-auto">
             <div class="modal-body">
               <!-- Project Details Go Here -->
               <h2 class="text-uppercase">{{ project.title }}</h2>
               <p class="item-intro text-muted">{{ project.subtitle }}</p>
+              {% if project.embed_url %}
+              <div class="mb-4" style="width: 100%; overflow: hidden;">
+                <iframe src="{{ project.embed_url }}" allowfullscreen
+                  style="width: 100%; height: 700px; border: 1px solid #ddd; border-radius: 8px;"></iframe>
+              </div>
+              {% else %}
               <img class="img-fluid d-block mx-auto" src="{{ site.baseurl }}/{{ project.image }}"
                 alt="{{ project.alt }}" />
+              {% endif %}
               <div class="project-content text-left mt-4 mb-4">
                 {{ project.content }}
               </div>
