@@ -78,7 +78,7 @@
       position: relative;
       height: 100%;
       width: 100%;
-      cursor: none; // Hide default cursor for magnetic feel (optional)
+      cursor: pointer; // Show pointer cursor
 
       .portfolio-hover {
         position: absolute;
