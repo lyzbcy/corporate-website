@@ -22,7 +22,11 @@
               <i class="{{ site.data.style.portfolio-icon | default: " fas fa-arrow-right fa-3x" }}"></i>
             </div>
           </div>
+          {% if project.caption.thumbnail contains 'http' %}
+          <img class="img-fluid" src="{{ project.caption.thumbnail }}" alt="">
+          {% else %}
           <img class="img-fluid" src="{{ site.baseurl }}/{{ project.caption.thumbnail }}" alt="">
+          {% endif %}
         </a>
         <div class="portfolio-caption">
           <h4>{{ project.caption.title }}</h4>
@@ -54,7 +58,11 @@
               <i class="{{ site.data.style.portfolio-icon | default: " fas fa-plus fa-3x" }}"></i>
             </div>
           </div>
+          {% if project.caption.thumbnail contains 'http' %}
+          <img class="img-fluid" src="{{ project.caption.thumbnail }}" alt="">
+          {% else %}
           <img class="img-fluid" src="{{ site.baseurl }}/{{ project.caption.thumbnail }}" alt="">
+          {% endif %}
         </a>
         <div class="portfolio-caption">
           <h4>{{ project.caption.title }}</h4>

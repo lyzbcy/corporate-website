@@ -23,8 +23,12 @@
                   style="width: 100%; height: 700px; border: 1px solid #ddd; border-radius: 8px;"></iframe>
               </div>
               {% else %}
+              {% if project.image contains 'http' %}
+              <img class="img-fluid d-block mx-auto" src="{{ project.image }}" alt="{{ project.alt }}" />
+              {% else %}
               <img class="img-fluid d-block mx-auto" src="{{ site.baseurl }}/{{ project.image }}"
                 alt="{{ project.alt }}" />
+              {% endif %}
               {% endif %}
               <div class="project-content text-left mt-4 mb-4">
                 {{ project.content }}
@@ -64,8 +68,12 @@
                   style="width: 100%; height: 700px; border: 1px solid #ddd; border-radius: 8px;"></iframe>
               </div>
               {% else %}
+              {% if project.image contains 'http' %}
+              <img class="img-fluid d-block mx-auto" src="{{ project.image }}" alt="{{ project.alt }}" />
+              {% else %}
               <img class="img-fluid d-block mx-auto" src="{{ site.baseurl }}/{{ project.image }}"
                 alt="{{ project.alt }}" />
+              {% endif %}
               {% endif %}
               <div class="project-content text-left mt-4 mb-4">
                 {{ project.content }}

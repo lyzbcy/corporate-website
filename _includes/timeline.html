@@ -78,7 +78,11 @@
         <a class="tree-content" data-toggle="modal" data-target="#p-{{ project.caption.title | slugify }}"
           href="#p-{{ project.caption.title | slugify }}" style="text-decoration: none; color: inherit;">
           <div class="tree-img-wrapper">
+            {% if project.caption.thumbnail contains 'http' %}
+            <img src="{{ project.caption.thumbnail }}" alt="{{ project.caption.title }}">
+            {% else %}
             <img src="{{ site.baseurl }}/{{ project.caption.thumbnail }}" alt="{{ project.caption.title }}">
+            {% endif %}
           </div>
           <div class="tree-text">
             <h4>{{ project.caption.title }}</h4>
