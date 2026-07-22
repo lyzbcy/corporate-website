@@ -10,6 +10,13 @@ caption:
   title: Pose Drive
   subtitle: AI Motion Capture for VR
   thumbnail: 
+total_score: 30.0
+score_value: 30
+score_difficulty: 30
+score_completeness: 60
+score_innovation: 30
+score_maintainability: 30
+is_signature: ''
 ---
 
 <div class="q-bounce-content" markdown="1">
