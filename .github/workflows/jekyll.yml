@@ -48,6 +48,10 @@ jobs:
         run: bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path }}"
         env:
           JEKYLL_ENV: production
+      - name: Generate version.json for cache busting
+        # 写入 commit sha + 时间戳，前端 JS 对比后决定是否刷新
+        run: |
+          echo '{"sha":"${{ github.sha }}","time":"'$(date -u +%Y-%m-%dT%H:%M:%SZ)'","repo":"${{ github.repository }}"}' > _site/version.json
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
