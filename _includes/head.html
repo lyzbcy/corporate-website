@@ -61,4 +61,28 @@
     }
   </style>
   {% endif %}
+
+  <!-- 版本号缓存检查：自动对比远端版本，不一致则清缓存刷新 -->
+  <script>
+  (function(){
+    try {
+      var VERSION_URL = '{{ site.baseurl }}/version.json?t=' + Date.now();
+      fetch(VERSION_URL, { cache: 'no-cache' })
+        .then(function(r){ return r.ok ? r.json() : null; })
+        .then(function(d){
+          if(!d || !d.sha) return;
+          var stored = localStorage.getItem('cw_version_sha');
+          if(stored && stored !== d.sha){
+            // 版本变了，更新记录并强制刷新（清缓存）
+            localStorage.setItem('cw_version_sha', d.sha);
+            location.reload(true);
+          } else if(!stored){
+            // 首次访问，记录当前版本
+            localStorage.setItem('cw_version_sha', d.sha);
+          }
+        })
+        .catch(function(){ /* 网络失败不刷新，避免死循环 */ });
+    } catch(e){ /* 任何异常都不阻塞页面 */ }
+  })();
+  </script>
 </head>
