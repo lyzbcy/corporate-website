@@ -10,13 +10,23 @@
         </h3>
       </div>
     </div>
+
+    <!-- 代表作标识说明 -->
+    <p class="text-center text-muted" style="font-size:.85rem;margin-bottom:1.5rem;">
+      ⭐ 标记为代表作（按综合评分自动排序，总分前 3 名）
+    </p>
+
     <!-- Replaced Row with Grid Container -->
     <div class="portfolio-grid-container">
-      {% for project in site.portfolio %}
+      {% assign portfolio_sorted = site.portfolio | sort: 'total_score' | reverse %}
+      {% for project in portfolio_sorted %}
       {% if project.featured %}
-      <div class="portfolio-item">
+      <div class="portfolio-item {{ project.is_signature | default: '' }}">
         <a class="portfolio-link" data-toggle="modal" data-target="#p-{{ project.caption.title | slugify }}"
           href="#p-{{ project.caption.title | slugify }}">
+          {% if project.is_signature == 'signature' %}
+          <span class="signature-badge" style="position:absolute;top:10px;right:10px;z-index:10;background:var(--forest,#1E3A24);color:#FAF6EB;padding:.15rem .6rem;border-radius:999px;font-size:.7rem;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.3);">⭐ 代表作</span>
+          {% endif %}
           <div class="portfolio-hover">
             <div class="portfolio-hover-content">
               <i class="{{ site.data.style.portfolio-icon | default: " fas fa-arrow-right fa-3x" }}"></i>
@@ -31,6 +41,25 @@
         <div class="portfolio-caption">
           <h4>{{ project.caption.title }}</h4>
           <p class="text-muted">{{ project.caption.subtitle }}</p>
+          {% if project.total_score %}
+          <div class="score-bar" style="margin-top:.4rem;">
+            <div style="display:inline-flex;align-items:center;gap:.3rem;font-size:.78rem;color:#888;">
+              <span>综合评分</span>
+              <strong style="color:var(--forest,#1E3A24);font-size:.85rem;">{{ project.total_score }}</strong>
+            </div>
+            <!-- 5维迷你条 -->
+            <div style="display:flex;gap:.15rem;margin-top:.25rem;justify-content:center;">
+              {% assign dims = "价值,难度,完成,创新,维护" | split: "," %}
+              {% assign vals = project.score_value | append: "," | append: project.score_difficulty | append: "," | append: project.score_completeness | append: "," | append: project.score_innovation | append: "," | append: project.score_maintainability | split: "," %}
+              {% for i in (0..4) %}
+              {% assign v = vals[i] | times: 1 %}
+              <div title="{{ dims[forloop.index0] }}: {{ v }}" style="width:28px;height:5px;background:#e0e0e0;border-radius:3px;overflow:hidden;">
+                <div style="width:{{ v }}%;height:100%;background:{% if v >= 70 %}#2F7D46{% elsif v >= 50 %}#F5E08A{% else %}#B5482A{% endif %};"></div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
         </div>
       </div>
       {% endif %}
