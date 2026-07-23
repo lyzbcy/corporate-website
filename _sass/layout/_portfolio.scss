@@ -488,11 +488,81 @@
   }
 }
 
+.project-sticker-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin: 1.4rem 0 2.1rem;
+
+  figure {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 250px;
+    margin: 0;
+    padding: 20px 20px 44px;
+    overflow: hidden;
+    border: 1px solid #e2d7c6;
+    border-radius: 18px;
+    background: #fbf6eb;
+  }
+
+  img {
+    width: 100%;
+    max-width: 210px;
+    max-height: 190px;
+    margin: 0 !important;
+    object-fit: contain;
+  }
+
+  figcaption {
+    position: absolute;
+    right: 16px;
+    bottom: 13px;
+    left: 16px;
+    color: #7a6e5b;
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-align: center;
+  }
+}
+
+.study-map-sticker-proof {
+  display: grid;
+  grid-template-columns: repeat(3, 96px) minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  margin: 1.25rem 0 2rem;
+  padding: 16px;
+  border: 1px solid #e0e8e2;
+  border-radius: 18px;
+  background: #f5f8f5;
+
+  img {
+    width: 96px;
+    height: 96px;
+    margin: 0 !important;
+    object-fit: contain;
+  }
+
+  p {
+    margin: 0 !important;
+    color: #5f6d64;
+    font-size: .86rem;
+    line-height: 1.7;
+  }
+}
+
 @media (max-width: 900px) {
   .project-modal-header { grid-template-columns: 1fr; gap: 20px; }
   .project-score-panel { max-width: none; }
   .project-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .project-flow { grid-template-columns: 1fr; }
+  .project-sticker-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .study-map-sticker-proof { grid-template-columns: repeat(3, 80px); justify-content: center; }
+  .study-map-sticker-proof img { width: 80px; height: 80px; }
+  .study-map-sticker-proof p { grid-column: 1 / -1; text-align: center; }
 }
 
 @media (max-width: 560px) {
@@ -500,4 +570,5 @@
   .portfolio-modal .modal-content h2 { font-size: 2.15rem; }
   .project-facts { grid-template-columns: 1fr; }
   .project-fact { min-height: 0; }
+  .project-sticker-gallery { grid-template-columns: 1fr; }
 }

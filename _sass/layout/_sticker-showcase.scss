@@ -1,0 +1,151 @@
+.sticker-showcase {
+  position: relative;
+  overflow: hidden;
+  padding: 92px 0;
+  color: #1d2d23;
+  background: #f7f0e3;
+
+  &::before {
+    position: absolute;
+    top: -90px;
+    right: -80px;
+    width: 330px;
+    height: 330px;
+    border: 1px solid rgba(30, 58, 36, .12);
+    border-radius: 50%;
+    content: "";
+  }
+
+  .container {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(280px, .8fr) minmax(520px, 1.2fr);
+    gap: 64px;
+    align-items: center;
+  }
+}
+
+.sticker-showcase-copy {
+  h2 {
+    margin: 12px 0 18px;
+    color: #1e3a24;
+    font-size: clamp(2rem, 4.5vw, 3.8rem);
+    font-weight: 700;
+    letter-spacing: -.055em;
+  }
+
+  p {
+    margin: 0 0 25px;
+    color: #66736a;
+    line-height: 1.85;
+  }
+}
+
+.sticker-showcase-kicker {
+  color: #9a7926;
+  font-size: .7rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.sticker-showcase-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 5px;
+  color: #1e3a24;
+  border-bottom: 1px solid rgba(30, 58, 36, .3);
+  font-size: .82rem;
+  font-weight: 800;
+
+  &:hover,
+  &:focus-visible {
+    color: #9a7926;
+    text-decoration: none;
+  }
+}
+
+.sticker-showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(2, 220px);
+  gap: 14px;
+}
+
+.sticker-card {
+  grid-column: span 2;
+  position: relative;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 20px 16px 40px;
+  overflow: hidden;
+  border: 1px solid #dfd3c0;
+  border-radius: 24px;
+  background: rgba(255, 252, 246, .88);
+  transition: transform 180ms ease, border-color 180ms ease;
+
+  &:hover {
+    border-color: #bd9e54;
+    transform: translateY(-5px) rotate(-1deg);
+  }
+
+  img {
+    width: 100%;
+    max-width: 180px;
+    max-height: 170px;
+    object-fit: contain;
+  }
+
+  figcaption {
+    position: absolute;
+    right: 16px;
+    bottom: 12px;
+    left: 16px;
+    color: #7d6e58;
+    font-size: .68rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-align: center;
+  }
+}
+
+.sticker-card-featured {
+  grid-column: span 4;
+  grid-row: span 2;
+
+  img {
+    max-width: 370px;
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 991px) {
+  .sticker-showcase .container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sticker-showcase {
+    padding: 70px 0;
+  }
+
+  .sticker-showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+  }
+
+  .sticker-card,
+  .sticker-card-featured {
+    grid-column: span 1;
+    grid-row: span 1;
+    min-height: 180px;
+  }
+
+  .sticker-card-featured {
+    grid-column: 1 / -1;
+    min-height: 280px;
+  }
+}
