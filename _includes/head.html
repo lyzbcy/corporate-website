@@ -1,4 +1,5 @@
 <head>
+  {% assign asset_version = site.time | date: "%s" %}
   {% if site.analytics.google %}
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.google }}"></script>
@@ -45,7 +46,7 @@
   {% endif %}
   <!-- Custom styles for this theme -->
   <!--<link href="{{ site.baseurl }}/assets/css/agency.min.css" rel="stylesheet">-->
-  <link href="{{ site.baseurl }}/assets/css/agency.css" rel="stylesheet" />
+  <link href="{{ site.baseurl }}/assets/css/agency.css?v={{ asset_version }}" rel="stylesheet" />
 
   <!-- Page container change top padding when nav shrinks -->
   {% if page.layout == "page" %}

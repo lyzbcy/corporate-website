@@ -8,6 +8,7 @@
 	{{ content }}
 
 	{% include footer.html %}
+	{% assign asset_version = site.time | date: "%s" %}
 
 	<!-- Bootstrap core JavaScript -->
 	<script src="{{ site.baseurl }}/assets/js/jquery.min.js"></script>
@@ -21,11 +22,11 @@
 	<script src="{{ site.baseurl }}/assets/js/contact_me.js"></script>
 
 	<!-- Custom scripts for this template -->
-	<script src="{{ site.baseurl }}/assets/js/agency.min.js"></script>
-	<script src="{{ site.baseurl }}/assets/js/creative-interactions.js"></script>
-	<script src="{{ site.baseurl }}/assets/js/particles-config.js"></script>
-	<script src="{{ site.baseurl }}/assets/js/timeline-interaction.js"></script>
-	<script src="{{ site.baseurl }}/assets/js/project-explorer.js"></script>
+	<script src="{{ site.baseurl }}/assets/js/agency.min.js?v={{ asset_version }}"></script>
+	<script src="{{ site.baseurl }}/assets/js/creative-interactions.js?v={{ asset_version }}"></script>
+	<script src="{{ site.baseurl }}/assets/js/particles-config.js?v={{ asset_version }}"></script>
+	<script src="{{ site.baseurl }}/assets/js/timeline-interaction.js?v={{ asset_version }}"></script>
+	<script src="{{ site.baseurl }}/assets/js/project-explorer.js?v={{ asset_version }}"></script>
 
 </body>
 
