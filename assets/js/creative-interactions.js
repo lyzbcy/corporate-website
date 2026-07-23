@@ -20,8 +20,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function openProjectFromHash() {
         const modal = getProjectModalFromHash();
-        if (modal && window.jQuery) {
-            window.jQuery(modal).modal('show');
+        if (!window.jQuery) return;
+
+        const $ = window.jQuery;
+        const $openModals = $('.portfolio-modal.show');
+
+        if (!modal) {
+            $openModals.modal('hide');
+            return;
+        }
+
+        if ($(modal).hasClass('show')) return;
+
+        const $otherModals = $openModals.filter(function () {
+            return this !== modal;
+        });
+
+        if ($otherModals.length) {
+            $otherModals.one('hidden.bs.modal', function () {
+                $(modal).modal('show');
+            });
+            $otherModals.modal('hide');
+        } else {
+            $(modal).modal('show');
         }
     }
 
