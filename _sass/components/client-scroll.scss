@@ -1,11 +1,176 @@
-// Styling for the horizontally scrolling clients section
+// Education and work experience
+.experience-strip {
+  position: relative;
+  overflow: hidden;
+  padding: 88px 0 96px;
+  color: #f8fafc;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(212, 175, 55, 0.14), transparent 34%),
+    linear-gradient(145deg, #111318 0%, #090a0d 100%);
+
+  &::after {
+    position: absolute;
+    right: -160px;
+    bottom: -220px;
+    width: 460px;
+    height: 460px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    content: "";
+  }
+}
+
+.experience-heading {
+  position: relative;
+  z-index: 1;
+  max-width: 620px;
+  margin-bottom: 36px;
+
+  h2 {
+    margin: 10px 0 8px;
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-weight: 600;
+    letter-spacing: -0.045em;
+  }
+
+  p {
+    margin: 0;
+    color: #9ca3af;
+    font-size: 1rem;
+  }
+}
+
+.experience-eyebrow {
+  color: #e7c96b;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.experience-logo-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.experience-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  min-height: 218px;
+  padding: 28px;
+  overflow: hidden;
+  color: #111827;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.22);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+
+  &:hover,
+  &:focus-visible {
+    color: #111827;
+    text-decoration: none;
+    border-color: rgba(231, 201, 107, 0.7);
+    box-shadow: 0 24px 65px rgba(0, 0, 0, 0.32);
+    transform: translateY(-5px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid rgba(231, 201, 107, 0.4);
+    outline-offset: 4px;
+  }
+}
+
+.experience-logo-stage {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 112px;
+  padding: 12px 20px;
+  border-radius: 16px;
+  background: #fff;
+
+  img {
+    display: block;
+    max-width: min(100%, 390px);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+}
+
+.experience-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  min-width: 0;
+
+  strong {
+    font-size: 1.08rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+}
+
+.experience-role {
+  padding: 5px 10px;
+  color: #705a16;
+  border-radius: 999px;
+  background: #f6edcd;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.experience-arrow {
+  align-self: center;
+  color: #8b7355;
+  font-size: 1.2rem;
+  transition: transform 180ms ease;
+}
+
+.experience-card:hover .experience-arrow {
+  transform: translate(2px, -2px);
+}
+
 #scrolling-clients {
   display: flex;
   flex-wrap: nowrap;
-  overflow-x: scroll;
+  overflow-x: auto;
   overflow-y: hidden;
+
+  .experience-card {
+    flex: 0 0 min(520px, 88vw);
+  }
 }
 
-#col-md-3 col-sm-6 {
-  flex: 0 0 auto;
+@media (max-width: 767px) {
+  .experience-strip {
+    padding: 68px 0 74px;
+  }
+
+  .experience-heading {
+    margin-bottom: 26px;
+  }
+
+  .experience-logo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-card {
+    min-height: 196px;
+    padding: 22px;
+    border-radius: 20px;
+  }
+
+  .experience-logo-stage {
+    height: 100px;
+    padding: 10px 14px;
+  }
 }

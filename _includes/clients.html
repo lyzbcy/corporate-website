@@ -1,30 +1,50 @@
-<!-- Clients -->
+<!-- Education & work experience -->
 {% if site.locale and site.locale != "" and site.locale != nil %}
-  <section class="py-5" id="{{ site.data.sitetext[site.locale].clients.section | default: "clients" }}">
-    <div class="container">
-      <div class="row" {% if site.data.sitetext[site.locale].clients.horizontal-scrolling == "yes" %} id="scrolling-clients" {% endif %}>
-	    {% for client in site.data.sitetext[site.locale].clients.list %}
-        <div class="col-md-3 col-sm-6">
-          <a href="{{ client.url }}">
-            <img class="img-fluid d-block mx-auto" src="{{ site.baseurl }}/{{ client.logo }}" alt="{{ client.title }}" style="max-height: {{ site.data.sitetext[site.locale].clients.max-height | default: "100px" }}">
-          </a>
-        </div>
-	    {% endfor %}
-      </div>
-    </div>
-  </section>
+  {% assign experience = site.data.sitetext[site.locale].clients %}
 {% else %}
-<section class="py-5" id="{{ site.data.sitetext.clients.section | default: "clients" }}">
+  {% assign experience = site.data.sitetext.clients %}
+{% endif %}
+
+<section class="experience-strip" id="{{ experience.section | default: "clients" }}">
   <div class="container">
-    <div class="row" {% if site.data.sitetext.clients.horizontal-scrolling == "yes" %} id="scrolling-clients" {% endif %}>
-    {% for client in site.data.sitetext.clients.list %}
-      <div class="col-md-3 col-sm-6">
-        <a href="{{ client.url }}">
-          <img class="img-fluid d-block mx-auto" src="{{ site.baseurl }}/{{ client.logo }}" alt="{{ client.title }}" style="max-height: {{ site.data.sitetext.clients.max-height | default: "100px" }}">
-        </a>
+    {% if experience.title %}
+      <div class="experience-heading">
+        {% if experience.eyebrow %}
+          <span class="experience-eyebrow">{{ experience.eyebrow }}</span>
+        {% endif %}
+        <h2>{{ experience.title }}</h2>
+        {% if experience.text %}
+          <p>{{ experience.text }}</p>
+        {% endif %}
       </div>
-    {% endfor %}
+    {% endif %}
+
+    <div class="experience-logo-grid" {% if experience.horizontal-scrolling == "yes" %}id="scrolling-clients"{% endif %}>
+      {% for client in experience.list %}
+        <a
+          class="experience-card"
+          href="{{ client.url }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="访问{{ client.title }}官网"
+        >
+          <span class="experience-logo-stage">
+            <img
+              src="{{ site.baseurl }}/{{ client.logo }}"
+              alt="{{ client.title }} Logo"
+              loading="lazy"
+              style="max-height: {{ experience.max-height | default: "82px" }}"
+            >
+          </span>
+          <span class="experience-card-meta">
+            {% if client.role %}
+              <span class="experience-role">{{ client.role }}</span>
+            {% endif %}
+            <strong>{{ client.title }}</strong>
+          </span>
+          <span class="experience-arrow" aria-hidden="true">↗</span>
+        </a>
+      {% endfor %}
     </div>
   </div>
 </section>
-{% endif %}

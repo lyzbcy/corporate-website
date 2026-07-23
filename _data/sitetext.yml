@@ -76,21 +76,20 @@ en: &DEFAULT_EN
 
   clients:
     section: clients
-    max-height: 100px
-    horizontal-scrolling: "" #"yes/no"
+    eyebrow: "EXPERIENCE"
+    title: "Education & Work"
+    text: "The places I have learned and worked have shaped who I am today."
+    max-height: 82px
+    horizontal-scrolling: ""
     list:
-      - title: "envato"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/envato.jpg
-      - title: "designmodo"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/designmodo.jpg
-      - title: "themeforest"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/themeforest.jpg
-      - title: "Creative Market"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/creative-market.jpg
+      - title: "江南大学"
+        role: "Education"
+        url: https://www.jiangnan.edu.cn/
+        logo: assets/img/clients/jiangnan-university.jpg
+      - title: "微盛"
+        role: "Work"
+        url: https://www.wshoto.com/
+        logo: assets/img/clients/weisheng.png
 
   team:
     title: "OUR AMAZING TEAM"
@@ -434,21 +433,20 @@ es: &DEFAULT_ES
 
   clients:
     section: clientes
-    max-height: 100px
-    horizontal-scrolling: "" #"yes/no"
+    eyebrow: "EXPERIENCIA"
+    title: "Formación y trabajo"
+    text: "Los lugares donde aprendí y trabajé también me formaron."
+    max-height: 82px
+    horizontal-scrolling: ""
     list:
-      - title: "envato"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/envato.jpg
-      - title: "designmodo"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/designmodo.jpg
-      - title: "themeforest"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/themeforest.jpg
-      - title: "Creative Market"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/creative-market.jpg
+      - title: "江南大学"
+        role: "Formación"
+        url: https://www.jiangnan.edu.cn/
+        logo: assets/img/clients/jiangnan-university.jpg
+      - title: "微盛"
+        role: "Trabajo"
+        url: https://www.wshoto.com/
+        logo: assets/img/clients/weisheng.png
 
   team:
     title: "NUESTRO INCREÍBLE EQUIPO"
@@ -638,21 +636,20 @@ de: &DEFAULT_DE
 
   clients:
     section: Kunden
-    max-height: 100px
-    horizontal-scrolling: "" #"yes/no"
+    eyebrow: "ERFAHRUNG"
+    title: "Studium & Beruf"
+    text: "Meine Lern- und Arbeitsorte haben mich geprägt."
+    max-height: 82px
+    horizontal-scrolling: ""
     list:
-      - title: "envato"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/envato.jpg
-      - title: "designmodo"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/designmodo.jpg
-      - title: "themeforest"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/themeforest.jpg
-      - title: "Creative Market"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/creative-market.jpg
+      - title: "江南大学"
+        role: "Studium"
+        url: https://www.jiangnan.edu.cn/
+        logo: assets/img/clients/jiangnan-university.jpg
+      - title: "微盛"
+        role: "Beruf"
+        url: https://www.wshoto.com/
+        logo: assets/img/clients/weisheng.png
 
   team:
     title: "Unser großartiges Team"
@@ -804,21 +801,20 @@ zh: &DEFAULT_ZH
 
   clients:
     section: clients
-    max-height: 100px
-    horizontal-scrolling: "" #"yes/no"
+    eyebrow: "EXPERIENCE"
+    title: "学习与工作经历"
+    text: "走过的地方，也塑造了今天的我。"
+    max-height: 82px
+    horizontal-scrolling: ""
     list:
-      - title: "envato"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/envato.jpg
-      - title: "designmodo"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/designmodo.jpg
-      - title: "themeforest"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/themeforest.jpg
-      - title: "Creative Market"
-        url: https://github.com/raviriley/agency-jekyll-theme
-        logo: assets/img/clients/creative-market.jpg
+      - title: "江南大学"
+        role: "学习经历"
+        url: https://www.jiangnan.edu.cn/
+        logo: assets/img/clients/jiangnan-university.jpg
+      - title: "微盛"
+        role: "工作经历"
+        url: https://www.wshoto.com/
+        logo: assets/img/clients/weisheng.png
 
   team:
     title: "我们的优秀团队"
