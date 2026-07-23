@@ -12,22 +12,22 @@
       </div>
     </div>
 
-    {% assign featured_projects = site.portfolio | where: "featured", true %}
+    {% assign homepage_limit = 9 %}
     <div class="portfolio-index-meta" aria-label="作品集概览">
-      <span><strong>{{ featured_projects.size }}</strong> 个精选作品</span>
+      <span>自动展示综合评分最高的 <strong>{{ homepage_limit }}</strong> 个项目</span>
       <span class="meta-divider"></span>
-      <span>⭐ 综合评分前 3 名标记为代表作</span>
+      <span>⭐ 前 3 名自动标记为代表作</span>
     </div>
 
-    <!-- Replaced Row with Grid Container -->
     <div class="portfolio-grid-container">
       {% assign portfolio_sorted = site.portfolio | sort: 'total_score' | reverse %}
-      {% for project in portfolio_sorted %}
-      {% if project.featured %}
-      <div class="portfolio-item {{ project.is_signature | default: '' }}">
+      {% for project in portfolio_sorted limit: homepage_limit %}
+      {% assign signature_class = '' %}
+      {% if forloop.index < 4 %}{% assign signature_class = 'signature' %}{% endif %}
+      <div class="portfolio-item {{ signature_class }}">
         <a class="portfolio-link" data-toggle="modal" data-target="#p-{{ project.caption.title | slugify }}"
           href="#p-{{ project.caption.title | slugify }}">
-          {% if project.is_signature == 'signature' %}
+          {% if forloop.index < 4 %}
           <span class="signature-badge" style="position:absolute;top:10px;right:10px;z-index:10;background:var(--forest,#1E3A24);color:#FAF6EB;padding:.15rem .6rem;border-radius:999px;font-size:.7rem;font-weight:700;box-shadow:0 2px 6px rgba(0,0,0,.3);">⭐ 代表作</span>
           {% endif %}
           <div class="portfolio-hover">
@@ -67,7 +67,6 @@
           {% endif %}
         </div>
       </div>
-      {% endif %}
       {% endfor %}
     </div>
 
