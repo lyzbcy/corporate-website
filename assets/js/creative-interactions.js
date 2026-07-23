@@ -3,6 +3,44 @@
  */
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Allow every project modal to be opened and shared with a direct URL hash.
+    function getProjectModalFromHash() {
+        if (!window.location.hash || window.location.hash.indexOf('#p-') !== 0) return null;
+
+        let modalId = window.location.hash.slice(1);
+        try {
+            modalId = decodeURIComponent(modalId);
+        } catch (error) {
+            return null;
+        }
+
+        const modal = document.getElementById(modalId);
+        return modal && modal.classList.contains('portfolio-modal') ? modal : null;
+    }
+
+    function openProjectFromHash() {
+        const modal = getProjectModalFromHash();
+        if (modal && window.jQuery) {
+            window.jQuery(modal).modal('show');
+        }
+    }
+
+    openProjectFromHash();
+    window.addEventListener('hashchange', openProjectFromHash);
+
+    if (window.jQuery) {
+        window.jQuery(document)
+            .on('shown.bs.modal', '.portfolio-modal', function () {
+                window.history.replaceState(null, '', '#' + this.id);
+            })
+            .on('hidden.bs.modal', '.portfolio-modal', function () {
+                const activeModal = getProjectModalFromHash();
+                if (activeModal === this) {
+                    window.history.replaceState(null, '', window.location.pathname + window.location.search);
+                }
+            });
+    }
+
     // 1. 3D Tilt Effect for Services & Portfolio
     const tiltElements = document.querySelectorAll('#services .col-md-4, .portfolio-item');
 
