@@ -4,19 +4,22 @@ subtitle: 基于普通摄像头的无穿戴 VR 交互方案
 image: 
 alt: Pose Drive 演示
 category: tool
+tags: [AI技术, Unity, VR, 开发中]
 featured: true
 
 caption:
   title: Pose Drive
   subtitle: AI Motion Capture for VR
   thumbnail: 
-total_score: 30.0
-score_value: 30
-score_difficulty: 30
-score_completeness: 60
-score_innovation: 30
-score_maintainability: 30
+total_score: 57.7
+score_value: 52
+score_difficulty: 80
+score_completeness: 38
+score_innovation: 78
+score_maintainability: 48
 is_signature: ''
+score_review: "普通摄像头、端侧姿态估计与 Unity 虚拟输入的组合有较强创新性，技术门槛也高；但目前仍是开发中方案，缺少稳定帧率、识别准确率和完整体验证据，不能按成品评价。"
+score_model: "Codex（GPT-5）"
 ---
 
 <div class="q-bounce-content" markdown="1">

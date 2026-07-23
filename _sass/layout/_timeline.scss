@@ -1,526 +1,380 @@
-// Tree of Works Timeline Styling (Three-Track Version)
+$color-school: #55e6aa;
+$color-personal: #c084fc;
+$color-team: #f6c453;
+$color-work: #60a5fa;
+$timeline-bg: #080b12;
+
 #timeline {
-  background-color: #0F0F11; // Dark Background
-  color: white;
-  padding-bottom: 200px;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 210px;
+  color: #f8fafc;
+  background:
+    radial-gradient(circle at 14% 14%, rgba($color-school, .09), transparent 27rem),
+    radial-gradient(circle at 87% 36%, rgba($color-work, .10), transparent 30rem),
+    linear-gradient(180deg, #0c101a 0%, $timeline-bg 58%, #070910 100%);
 
-  .section-heading {
-    color: white;
+  &::before {
+    position: absolute;
+    inset: 0;
+    content: "";
+    pointer-events: none;
+    opacity: .22;
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
   }
 
-  .section-subheading {
-    color: #ADB5BD;
-  }
+  .container { position: relative; z-index: 1; }
+  .section-heading { color: #fff; letter-spacing: -.045em; }
+  .section-subheading { color: #94a3b8 !important; }
 }
 
-$color-school: #00f260; // Cyan/Green
-$color-personal: #ff00cc; // Pink/Magenta
-$color-team: #D4AF37; // Gold/Yellow
+.section-kicker {
+  display: inline-block;
+  margin-bottom: .85rem;
+  color: #8ea0bb;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+}
 
 .tree-container {
   position: relative;
-  max-width: 1000px;
-  margin: 120px auto 0; // Extra top margin for crown
-  padding: 20px 0;
-  overflow: visible; // Allow branches to extend
+  max-width: 1040px;
+  margin: 150px auto 0;
+  padding: 30px 0 12px;
+  overflow: visible;
 }
 
-// 0. Filter Buttons
 .tree-filters {
   position: absolute;
-  top: -40px;
+  z-index: 20;
+  top: -58px;
   left: 50%;
+  display: inline-flex;
+  gap: 6px;
+  padding: 7px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 999px;
+  background: rgba(8,11,18,.76);
+  box-shadow: 0 18px 50px rgba(0,0,0,.28);
+  backdrop-filter: blur(18px);
   transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 10;
 
   .filter-btn {
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: bold;
-    color: rgba(255, 255, 255, 0.7);
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 14px;
+    border: 1px solid transparent;
+    border-radius: 999px;
+    color: #9aa7ba;
+    background: transparent;
+    font-size: .76rem;
+    font-weight: 700;
+    white-space: nowrap;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: color .25s ease, background .25s ease, border-color .25s ease, transform .25s ease;
 
-    &:hover {
-      transform: translateY(-2px);
-      color: white;
+    .filter-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 12px currentColor;
     }
 
-    &.school:hover,
-    &.active-school {
-      background: $color-school;
-      color: #000;
-      box-shadow: 0 0 10px $color-school;
-    }
+    &:hover { color: #fff; transform: translateY(-1px); }
+    &.school .filter-dot { color: $color-school; }
+    &.personal .filter-dot { color: $color-personal; }
+    &.team .filter-dot { color: $color-team; }
+    &.work .filter-dot { color: $color-work; }
 
-    &.personal:hover,
-    &.active-personal {
-      background: $color-personal;
-      color: white;
-      box-shadow: 0 0 10px $color-personal;
-    }
-
-    &.team:hover,
-    &.active-team {
-      background: $color-team;
-      color: #000;
-      box-shadow: 0 0 10px $color-team;
+    &.is-active {
+      color: #fff;
+      border-color: rgba(255,255,255,.14);
+      background: rgba(255,255,255,.08);
     }
   }
 }
 
-// 1. Bundled Trunk (Container)
+.tree-filter-hint {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  margin: 0;
+  color: #64748b;
+  font-size: .7rem;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.tree-crown-svg,
+.tree-roots-svg {
+  position: absolute;
+  left: 50%;
+  pointer-events: none;
+  overflow: visible;
+  transform: translateX(-50%);
+}
+
+.tree-crown-svg { top: -150px; width: 480px; height: 150px; }
+.tree-roots-svg { bottom: -158px; width: 480px; height: 170px; }
+
+.crown-path,
+.root-path {
+  fill: none;
+  stroke-width: 3;
+  stroke-linecap: round;
+  opacity: .72;
+  filter: url(#treeGlow);
+}
+
+.crown-orbit { fill: rgba(255,255,255,.018); stroke-width: 1; opacity: .68; }
+.crown-core { filter: url(#treeGlow); }
+.school { &.crown-path, &.root-path, &.crown-orbit { stroke: $color-school; } &.crown-core { fill: $color-school; } }
+.personal { &.crown-path, &.root-path, &.crown-orbit { stroke: $color-personal; } &.crown-core { fill: $color-personal; } }
+.team { &.crown-path, &.root-path, &.crown-orbit { stroke: $color-team; } &.crown-core { fill: $color-team; } }
+.work { &.crown-path, &.root-path, &.crown-orbit { stroke: $color-work; } &.crown-core { fill: $color-work; } }
+
 .tree-trunk-bundle {
   position: absolute;
+  z-index: 1;
   top: 0;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
   display: flex;
   justify-content: center;
-  gap: 4px;
-  z-index: 1;
+  gap: 3px;
+  width: 24px;
+  transform: translateX(-50%);
 
   .trunk-line {
-    width: 4px;
+    width: 3px;
     height: 100%;
-    border-radius: 4px;
-    position: relative;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-
-    &.school {
-      background: linear-gradient(to bottom, lighten($color-school, 20%), $color-school);
-      box-shadow: 0 0 8px rgba($color-school, 0.4);
-    }
-
-    &.personal {
-      background: linear-gradient(to bottom, lighten($color-personal, 20%), $color-personal);
-      box-shadow: 0 0 8px rgba($color-personal, 0.4);
-    }
-
-    &.team {
-      background: linear-gradient(to bottom, lighten($color-team, 20%), $color-team);
-      box-shadow: 0 0 8px rgba($color-team, 0.4);
-    }
+    border-radius: 99px;
+    opacity: .75;
+    transition: opacity .3s ease, filter .3s ease;
+    &.school { background: $color-school; box-shadow: 0 0 12px rgba($color-school,.38); }
+    &.personal { background: $color-personal; box-shadow: 0 0 12px rgba($color-personal,.38); }
+    &.team { background: $color-team; box-shadow: 0 0 12px rgba($color-team,.38); }
+    &.work { background: $color-work; box-shadow: 0 0 12px rgba($color-work,.38); }
   }
 }
 
-// 2. Tree Item Wrapper
 .tree-item {
   position: relative;
-  width: 50%;
-  padding: 20px 60px;
-  box-sizing: border-box;
+  z-index: 5;
   display: flex;
   align-items: center;
-  z-index: 5;
+  width: 50%;
+  min-height: 150px;
+  padding: 18px 62px;
+  box-sizing: border-box;
   opacity: 0;
-  animation: fadeInUp 0.8s ease-out forwards;
+  animation: fadeInUp .7s ease-out forwards;
+  transition: min-height .38s ease, height .38s ease, padding .38s ease, opacity .28s ease, filter .28s ease;
 
   .tree-branch {
     position: absolute;
     top: 50%;
-    height: 3px;
-    box-shadow: 0 0 5px currentColor;
+    width: 48px;
+    height: 2px;
+    background: currentColor;
+    box-shadow: 0 0 8px currentColor;
+    transition: width .35s ease, opacity .28s ease, transform .35s ease;
 
-    .branch-date {
+    &::after {
       position: absolute;
       top: 50%;
-      font-size: 11px;
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.9);
-      background: #0F0F11;
-      padding: 3px 10px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      border-radius: 12px;
-      white-space: nowrap;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-      z-index: 20;
+      width: 7px;
+      height: 7px;
+      border: 1px solid currentColor;
+      border-radius: 50%;
+      content: "";
+      background: $timeline-bg;
+      box-shadow: 0 0 9px currentColor;
+      transform: translateY(-50%);
     }
   }
 
-  &.school-item {
-    .tree-branch {
-      background: $color-school;
-      border-color: $color-school;
-      color: rgba($color-school, 0.5);
-
-      .branch-date {
-        border-color: $color-school;
-        color: lighten($color-school, 10%);
-        box-shadow: 0 0 5px rgba($color-school, 0.3);
-      }
-    }
-
-    .tree-content {
-      border-color: rgba($color-school, 0.3);
-    }
-
-    .tree-content:hover {
-      border-color: $color-school;
-      background: rgba($color-school, 0.1);
-    }
-
-    .tree-img-wrapper {
-      border-color: $color-school;
-    }
-
-    .project-tag {
-      background: $color-school;
-      color: #000;
-    }
+  .branch-date {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    padding: 4px 9px;
+    border: 1px solid currentColor;
+    border-radius: 99px;
+    color: inherit;
+    background: rgba(8,11,18,.92);
+    font-size: .65rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    white-space: nowrap;
+    transform: translateY(-50%);
+    transition: opacity .2s ease, transform .3s ease;
   }
 
-  &.personal-item {
-    .tree-branch {
-      background: $color-personal;
-      border-color: $color-personal;
-      color: rgba($color-personal, 0.5);
-
-      .branch-date {
-        border-color: $color-personal;
-        color: lighten($color-personal, 10%);
-        box-shadow: 0 0 5px rgba($color-personal, 0.3);
-      }
-    }
-
-    .tree-content {
-      border-color: rgba($color-personal, 0.3);
-    }
-
-    .tree-content:hover {
-      border-color: $color-personal;
-      background: rgba($color-personal, 0.1);
-    }
-
-    .tree-img-wrapper {
-      border-color: $color-personal;
-    }
-
-    .project-tag {
-      background: $color-personal;
-      color: white;
-    }
+  .compressed-project-label {
+    position: absolute;
+    top: -19px;
+    left: 50%;
+    display: none;
+    width: max-content;
+    max-width: 220px;
+    overflow: hidden;
+    color: #718096;
+    font-size: .62rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transform: translateX(-50%);
   }
 
-  &.team-item {
-    .tree-branch {
-      background: $color-team;
-      border-color: $color-team;
-      color: rgba($color-team, 0.5);
-
-      .branch-date {
-        border-color: $color-team;
-        color: lighten($color-team, 10%);
-        box-shadow: 0 0 5px rgba($color-team, 0.3);
-      }
-    }
-
-    .tree-content {
-      border-color: rgba($color-team, 0.3);
-    }
-
-    .tree-content:hover {
-      border-color: $color-team;
-      background: rgba($color-team, 0.1);
-    }
-
-    .tree-img-wrapper {
-      border-color: $color-team;
-    }
-
-    .project-tag {
-      background: $color-team;
-      color: #000;
-    }
-  }
+  &.school-item { color: $color-school; }
+  &.personal-item { color: $color-personal; }
+  &.team-item { color: $color-team; }
+  &.work-item { color: $color-work; }
 
   &.left {
     left: 0;
     text-align: right;
     flex-direction: row-reverse;
-
-    .tree-branch {
-      right: 14px;
-      width: 46px;
-
-      .branch-date {
-        right: -14px;
-        transform: translate(50%, -50%);
-      }
-    }
+    .tree-branch { right: 14px; &::after { right: -4px; } }
+    .branch-date { right: -14px; transform: translate(50%,-50%); }
   }
 
   &.right {
     left: 50%;
     text-align: left;
+    .tree-branch { left: 14px; &::after { left: -4px; } }
+    .branch-date { left: -14px; transform: translate(-50%,-50%); }
+  }
 
-    .tree-branch {
-      left: 14px;
-      width: 46px;
+  &.is-collapsed {
+    min-height: 12px;
+    height: 12px;
+    padding-top: 0;
+    padding-bottom: 0;
+    opacity: .32;
+    filter: saturate(.55) blur(.25px);
+    animation: none;
 
-      .branch-date {
-        left: -14px;
-        transform: translate(-50%, -50%);
-      }
-    }
+    .tree-content { display: none; }
+    .tree-branch { top: 50%; width: 18px; opacity: .72; }
+    .branch-date { opacity: 0; pointer-events: none; }
+    &:hover { opacity: .75; filter: none; .compressed-project-label { display: block; } }
   }
 }
 
-// 3. Tree Content Card
 .tree-content {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 15px;
-  border-radius: 15px;
   display: flex;
   align-items: center;
-  transition: all 0.3s ease;
   width: 100%;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  min-height: 112px;
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 18px;
+  color: inherit;
+  background: linear-gradient(145deg, rgba(255,255,255,.07), rgba(255,255,255,.025));
+  box-shadow: 0 14px 44px rgba(0,0,0,.22);
+  backdrop-filter: blur(16px);
+  transition: border-color .28s ease, background .28s ease, transform .28s ease, box-shadow .28s ease;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    content: "";
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(circle at 18% 0%, currentColor, transparent 34%);
+    transition: opacity .28s ease;
+  }
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-
-    .tree-img-wrapper img {
-      transform: scale(1.1);
-    }
+    border-color: currentColor;
+    color: inherit;
+    background: rgba(255,255,255,.075);
+    box-shadow: 0 22px 60px rgba(0,0,0,.34);
+    transform: translateY(-4px);
+    &::before { opacity: .08; }
+    .tree-img-wrapper img { transform: scale(1.06); }
   }
 }
 
 .tree-img-wrapper {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
   overflow: hidden;
-  flex-shrink: 0;
-  border: 2px solid white;
+  border: 1px solid currentColor;
+  border-radius: 14px;
+  background: rgba(255,255,255,.04);
+  box-shadow: inset 0 0 0 4px rgba(8,11,18,.5);
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.5s ease;
-  }
+  img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+  .tree-img-fallback { color: currentColor; font-size: 1.35rem; font-weight: 800; }
 }
 
 .tree-text {
-  flex-grow: 1;
-  padding: 0 20px;
+  flex: 1;
+  min-width: 0;
+  padding: 0 18px;
+  color: #f8fafc;
 
-  h4 {
-    margin: 0;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 700;
-    font-family: "Outfit", sans-serif;
-  }
-
+  h4 { margin: 2px 0 4px; color: #fff; font: 700 1.02rem/1.25 "Outfit", sans-serif; }
+  p { margin: 0; color: #8b98ab; font-size: .78rem; line-height: 1.45; }
   .project-tag {
     display: inline-block;
-    font-size: 0.7rem;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-weight: 700;
-    margin: 5px 0;
+    margin: 0 0 3px;
+    color: currentColor;
+    font-size: .62rem;
+    font-weight: 800;
+    letter-spacing: .08em;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  p {
-    margin: 0;
-    font-size: 0.85rem;
-    color: #ADB5BD;
   }
 }
 
-// ============================================
-// TREE CROWN SVG (Extended Lines)
-// ============================================
-.tree-crown-svg {
-  position: absolute;
-  top: -130px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 350px;
-  height: 150px;
-  z-index: 0;
-  pointer-events: none;
-  overflow: visible;
+.tree-container[data-active-filter]:not([data-active-filter=""]) {
+  .trunk-line { opacity: .12; }
+  &[data-active-filter="school"] .trunk-line.school,
+  &[data-active-filter="personal"] .trunk-line.personal,
+  &[data-active-filter="team"] .trunk-line.team,
+  &[data-active-filter="work"] .trunk-line.work { opacity: 1; filter: brightness(1.25); }
 }
 
-// ============================================
-// TREE ROOTS SVG (Extended Lines)
-// ============================================
-.tree-roots-svg {
-  position: absolute;
-  bottom: -160px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 400px;
-  height: 180px;
-  z-index: 0;
-  pointer-events: none;
-  overflow: visible;
-}
-
-// --- Filtering States ---
-.tree-container.filtering-school {
-
-  .trunk-line.personal,
-  .trunk-line.team {
-    opacity: 0.1;
-  }
-
-  .tree-item.personal-item,
-  .tree-item.team-item {
-    opacity: 0.1;
-    transform: scale(0.9);
-    filter: blur(2px);
-    pointer-events: none;
-  }
-
-  .filter-btn.school {
-    @extend .active-school;
-  }
-}
-
-.tree-container.filtering-personal {
-
-  .trunk-line.school,
-  .trunk-line.team {
-    opacity: 0.1;
-  }
-
-  .tree-item.school-item,
-  .tree-item.team-item {
-    opacity: 0.1;
-    transform: scale(0.9);
-    filter: blur(2px);
-    pointer-events: none;
-  }
-
-  .filter-btn.personal {
-    @extend .active-personal;
-  }
-}
-
-.tree-container.filtering-team {
-
-  .trunk-line.school,
-  .trunk-line.personal {
-    opacity: 0.1;
-  }
-
-  .tree-item.school-item,
-  .tree-item.personal-item {
-    opacity: 0.1;
-    transform: scale(0.9);
-    filter: blur(2px);
-    pointer-events: none;
-  }
-
-  .filter-btn.team {
-    @extend .active-team;
-  }
-}
-
-// Mobile Responsive
 @media (max-width: 768px) {
-  #timeline {
-    padding-bottom: 60px;
-  }
-
-  .tree-container {
-    margin-top: 30px;
-  }
-
-  .tree-filters {
-    position: relative;
-    top: 0;
-    left: 0;
-    transform: none;
-    justify-content: center;
-    margin-bottom: 40px;
-    flex-wrap: nowrap;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 6px;
-    border-radius: 30px;
-    display: inline-flex;
-    left: 50%;
-    transform: translateX(-50%);
-    width: auto;
-
-    .filter-btn {
-      margin: 0 2px;
-      background: transparent;
-      border: none;
-
-      &.school:hover,
-      &.active-school,
-      &.personal:hover,
-      &.active-personal,
-      &.team:hover,
-      &.active-team {
-        box-shadow: none;
-        color: black;
-        border-radius: 20px;
-      }
-
-      &.personal:hover,
-      &.active-personal {
-        color: white;
-      }
-    }
-  }
-
-  .tree-trunk-bundle {
-    left: 20px;
-  }
-
-  .tree-crown,
-  .tree-roots {
-    display: none; // Hide on mobile for simplicity
-  }
-
+  #timeline { padding-bottom: 90px; }
+  .tree-container { margin-top: 88px; }
+  .tree-crown-svg, .tree-roots-svg { display: none; }
+  .tree-filters { top: -76px; width: calc(100% - 24px); overflow-x: auto; justify-content: flex-start; }
+  .tree-filter-hint { top: -24px; max-width: 92%; overflow: hidden; text-overflow: ellipsis; }
+  .tree-trunk-bundle { left: 25px; }
   .tree-item {
     width: 100%;
-    padding-left: 70px;
-    padding-right: 15px;
-    margin-bottom: 30px;
-
-    &.left,
-    &.right {
+    min-height: 138px;
+    padding: 14px 12px 14px 68px;
+    &.left, &.right {
       left: 0;
       text-align: left;
       flex-direction: row;
-
-      .tree-branch {
-        left: 20px;
-        right: auto;
-        width: 35px;
-        height: 40px;
-        top: auto;
-        bottom: 50%;
-        background: transparent !important;
-        border-bottom: 3px solid;
-        border-left: 3px solid;
-        border-bottom-left-radius: 20px;
-        box-shadow: none;
-        transform: translateY(1.5px);
-      }
-
-      .tree-content {
-        flex-direction: row;
-      }
+      .tree-branch { left: 25px; right: auto; width: 30px; }
+      .branch-date { display: none; }
     }
+    &.is-collapsed { min-height: 10px; height: 10px; padding: 0 12px 0 68px; }
   }
+  .tree-content { min-height: 104px; }
+  .tree-img-wrapper { width: 62px; height: 62px; flex-basis: 62px; }
+  .tree-text { padding: 0 12px; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
 }

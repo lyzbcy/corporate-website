@@ -1,42 +1,68 @@
 <!-- Portfolio Modals -->
 {% for project in site.portfolio %}
-{% if site.locale and site.locale != "" and site.locale != nil %}
 <div class="portfolio-modal modal fade" id="p-{{ project.caption.title | slugify }}" tabindex="-1" role="dialog"
-  aria-hidden="true">
+  aria-hidden="true" aria-labelledby="p-title-{{ project.caption.title | slugify }}">
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="close-modal" data-dismiss="modal">
-        <div class="lr">
-          <div class="rl"></div>
-        </div>
-      </div>
+      <button class="close-modal" data-dismiss="modal" type="button" aria-label="关闭项目详情">
+        <div class="lr"><div class="rl"></div></div>
+      </button>
       <div class="container">
         <div class="row">
           <div class="col-lg-11 mx-auto">
             <div class="modal-body">
-              <!-- Project Details Go Here -->
-              <h2 class="text-uppercase">{{ project.title }}</h2>
-              <p class="item-intro text-muted">{{ project.subtitle }}</p>
+              <header class="project-modal-header">
+                <div class="project-modal-title">
+                  {% if project.tags %}
+                  <div class="project-modal-tags">{% for tag in project.tags limit: 4 %}<span>{{ tag }}</span>{% endfor %}</div>
+                  {% endif %}
+                  <h2 class="text-uppercase" id="p-title-{{ project.caption.title | slugify }}">{{ project.title }}</h2>
+                  <p class="item-intro text-muted">{{ project.subtitle }}</p>
+                </div>
+                {% if project.total_score %}
+                <aside class="project-score-panel" aria-label="项目评分详情">
+                  <div class="project-score-summary">
+                    <div class="score-ring" style="--score: {{ project.total_score }}">
+                      <strong>{{ project.total_score }}</strong><span>/ 100</span>
+                    </div>
+                    <div><span class="score-panel-label">PROJECT SCORE</span><b>综合评分</b></div>
+                  </div>
+                  <div class="score-dimensions">
+                    {% assign score_names = "实用价值,技术难度,完成度,创新性,可维护性" | split: "," %}
+                    {% assign score_values = project.score_value | append: "," | append: project.score_difficulty | append: "," | append: project.score_completeness | append: "," | append: project.score_innovation | append: "," | append: project.score_maintainability | split: "," %}
+                    {% for score_name in score_names %}
+                    {% assign score_value = score_values[forloop.index0] | times: 1 %}
+                    <div class="score-dimension">
+                      <div><span>{{ score_name }}</span><b>{{ score_value }}</b></div>
+                      <div class="score-dimension-track"><span style="width: {{ score_value }}%"></span></div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </aside>
+                {% endif %}
+              </header>
+
+              {% if project.score_review %}
+              <blockquote class="project-score-review">
+                <p>{{ project.score_review }}</p>
+                <footer>————来自【{{ project.score_model | default: "Codex（GPT-5）" }}】</footer>
+              </blockquote>
+              {% endif %}
+
               {% if project.embed_url %}
-              <div class="mb-4" style="width: 100%; overflow: hidden;">
-                <iframe src="{{ project.embed_url }}" allowfullscreen
-                  style="width: 100%; height: 700px; border: 1px solid #ddd; border-radius: 8px;"></iframe>
+              <div class="mb-4 project-embed-frame">
+                <iframe src="{{ project.embed_url }}" allowfullscreen title="{{ project.title }} 在线演示"></iframe>
               </div>
-              {% else %}
-              {% if project.image contains 'http' %}
-              <img class="img-fluid d-block mx-auto" src="{{ project.image }}" alt="{{ project.alt }}" />
-              {% else %}
-              <img class="img-fluid d-block mx-auto" src="{{ site.baseurl }}/{{ project.image }}"
-                alt="{{ project.alt }}" />
+              {% elsif project.image contains 'http' %}
+              <img class="img-fluid d-block mx-auto project-hero-image" src="{{ project.image }}" alt="{{ project.alt }}" />
+              {% elsif project.image %}
+              <img class="img-fluid d-block mx-auto project-hero-image" src="{{ site.baseurl }}/{{ project.image }}" alt="{{ project.alt }}" />
               {% endif %}
-              {% endif %}
-              <div class="project-content text-left mt-4 mb-4">
-                {{ project.content }}
-              </div>
+
+              <div class="project-content text-left mt-4 mb-4">{{ project.content }}</div>
               <button class="btn btn-primary" data-dismiss="modal" type="button">
                 <i class="fas fa-times"></i>
-                {{ site.data.sitetext[site.locale].portfolio.closebutton |
-                default: "Close Project" }}
+                {% if site.locale %}{{ site.data.sitetext[site.locale].portfolio.closebutton | default: "关闭项目" }}{% else %}{{ site.data.sitetext.portfolio.closebutton | default: "关闭项目" }}{% endif %}
               </button>
             </div>
           </div>
@@ -45,51 +71,5 @@
     </div>
   </div>
 </div>
-{% else %}
-<div class="portfolio-modal modal fade" id="p-{{ project.caption.title | slugify }}" tabindex="-1" role="dialog"
-  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="close-modal" data-dismiss="modal">
-        <div class="lr">
-          <div class="rl"></div>
-        </div>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-11 mx-auto">
-            <div class="modal-body">
-              <!-- Project Details Go Here -->
-              <h2 class="text-uppercase">{{ project.title }}</h2>
-              <p class="item-intro text-muted">{{ project.subtitle }}</p>
-              {% if project.embed_url %}
-              <div class="mb-4" style="width: 100%; overflow: hidden;">
-                <iframe src="{{ project.embed_url }}" allowfullscreen
-                  style="width: 100%; height: 700px; border: 1px solid #ddd; border-radius: 8px;"></iframe>
-              </div>
-              {% else %}
-              {% if project.image contains 'http' %}
-              <img class="img-fluid d-block mx-auto" src="{{ project.image }}" alt="{{ project.alt }}" />
-              {% else %}
-              <img class="img-fluid d-block mx-auto" src="{{ site.baseurl }}/{{ project.image }}"
-                alt="{{ project.alt }}" />
-              {% endif %}
-              {% endif %}
-              <div class="project-content text-left mt-4 mb-4">
-                {{ project.content }}
-              </div>
-              <button class="btn btn-primary" data-dismiss="modal" type="button">
-                <i class="fas fa-times"></i>
-                {{ site.data.sitetext.portfolio.closebutton |
-                default: "Close Project" }}
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-{% endif %}
 {% endfor %}
 <!-- End Portfolio Modals -->

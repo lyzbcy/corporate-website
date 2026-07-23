@@ -1,134 +1,103 @@
-<!-- Tree of Works Timeline (3-Track) -->
+<!-- Four-track project archive -->
 <section class="page-section" id="timeline">
   <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
+        <span class="section-kicker">PROJECT ARCHIVE · 2024—NOW</span>
         <h2 class="section-heading text-uppercase">作品时间树</h2>
-        <h3 class="section-subheading text-muted">我们的创意发展历程</h3>
+        <h3 class="section-subheading text-muted">四条成长轨迹，在同一条时间线上交汇</h3>
       </div>
     </div>
 
-    <div class="tree-container" id="tree-container">
-      <!-- Filter Labels (Top of Trunk) -->
-      <div class="tree-filters">
-        <div class="filter-btn school" data-filter="school">学校作品</div>
-        <div class="filter-btn personal" data-filter="personal">个人作品</div>
-        <div class="filter-btn team" data-filter="team">团队作品</div>
+    <div class="tree-container" id="tree-container" data-active-filter="">
+      <div class="tree-filters" role="toolbar" aria-label="按项目轨迹筛选">
+        <button class="filter-btn school" type="button" data-filter="school" aria-pressed="false">
+          <span class="filter-dot"></span>学校作品
+        </button>
+        <button class="filter-btn personal" type="button" data-filter="personal" aria-pressed="false">
+          <span class="filter-dot"></span>个人作品
+        </button>
+        <button class="filter-btn team" type="button" data-filter="team" aria-pressed="false">
+          <span class="filter-dot"></span>团队作品
+        </button>
+        <button class="filter-btn work" type="button" data-filter="work" aria-pressed="false">
+          <span class="filter-dot"></span>打工项目
+        </button>
       </div>
+      <p class="tree-filter-hint" aria-live="polite">点击轨迹聚焦；再次点击可查看全部</p>
 
-      <!-- Tree Crown (Extended from Trunk Lines) -->
-      <svg class="tree-crown-svg" viewBox="0 0 400 150" preserveAspectRatio="xMidYMax meet">
+      <svg class="tree-crown-svg" viewBox="0 0 480 150" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
         <defs>
-          <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="6" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
+          <filter id="treeGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
         </defs>
-
-        <!-- Left trunk line extends up and curves into large circle (Green) -->
-        <path d="M185,150 L185,100 Q185,60 150,30" stroke="#00f260" stroke-width="5" fill="none" stroke-linecap="round"
-          filter="url(#glow)" />
-        <circle cx="130" cy="40" r="55" fill="rgba(0, 242, 96, 0.2)" stroke="#00f260" stroke-width="4"
-          filter="url(#glow)" />
-
-        <!-- Center trunk line extends up (Pink) -->
-        <path d="M200,150 L200,80 Q200,50 200,30" stroke="#ff00cc" stroke-width="5" fill="none" stroke-linecap="round"
-          filter="url(#glow)" />
-        <circle cx="200" cy="45" r="50" fill="rgba(255, 0, 204, 0.2)" stroke="#ff00cc" stroke-width="4"
-          filter="url(#glow)" />
-
-        <!-- Right trunk line extends up and curves (Gold) -->
-        <path d="M215,150 L215,100 Q215,60 250,30" stroke="#D4AF37" stroke-width="5" fill="none" stroke-linecap="round"
-          filter="url(#glow)" />
-        <circle cx="270" cy="40" r="55" fill="rgba(212, 175, 55, 0.2)" stroke="#D4AF37" stroke-width="4"
-          filter="url(#glow)" />
+        <path class="crown-path school" d="M228 150V112Q228 74 92 42" />
+        <path class="crown-path personal" d="M236 150V100Q236 66 194 34" />
+        <path class="crown-path team" d="M244 150V100Q244 66 286 34" />
+        <path class="crown-path work" d="M252 150V112Q252 74 388 42" />
+        <circle class="crown-orbit school" cx="82" cy="39" r="29" />
+        <circle class="crown-orbit personal" cx="186" cy="31" r="25" />
+        <circle class="crown-orbit team" cx="294" cy="31" r="25" />
+        <circle class="crown-orbit work" cx="398" cy="39" r="29" />
+        <circle class="crown-core school" cx="82" cy="39" r="5" />
+        <circle class="crown-core personal" cx="186" cy="31" r="5" />
+        <circle class="crown-core team" cx="294" cy="31" r="5" />
+        <circle class="crown-core work" cx="398" cy="39" r="5" />
       </svg>
 
-      <!-- Bundled Trunk (3 Lines) -->
-      <div class="tree-trunk-bundle">
+      <div class="tree-trunk-bundle" aria-hidden="true">
         <div class="trunk-line school"></div>
         <div class="trunk-line personal"></div>
         <div class="trunk-line team"></div>
+        <div class="trunk-line work"></div>
       </div>
 
       {% assign sorted_projects = site.portfolio | sort: 'date' | reverse %}
       {% for project in sorted_projects %}
       {% assign remainder = forloop.index | modulo: 2 %}
       {% if project.category == 'school' %}
-      {% assign category = "school" %}
-      {% assign catText = "学校作品" %}
-      {% elsif project.category == 'personal' %}
-      {% assign category = "personal" %}
-      {% assign catText = "个人作品" %}
-      {% elsif project.category == 'team' %}
-      {% assign category = "team" %}
-      {% assign catText = "团队作品" %}
+      {% assign category = "school" %}{% assign catText = "学校作品" %}
+      {% elsif project.category == 'team' or project.category == '团队项目' %}
+      {% assign category = "team" %}{% assign catText = "团队作品" %}
+      {% elsif project.category == 'work' %}
+      {% assign category = "work" %}{% assign catText = "打工项目" %}
       {% else %}
-      {% assign category = "personal" %}
-      {% assign catText = "个人作品" %}
+      {% assign category = "personal" %}{% assign catText = "个人作品" %}
       {% endif %}
 
-      <div class="tree-item {% if remainder == 0 %}right{% else %}left{% endif %} {{ category }}-item">
+      <div class="tree-item {% if remainder == 0 %}right{% else %}left{% endif %} {{ category }}-item"
+        data-category="{{ category }}" data-title="{{ project.caption.title | escape }}">
         <div class="tree-branch">
           <span class="branch-date">{{ project.date | date: "%Y.%m.%d" }}</span>
+          <span class="compressed-project-label">{{ project.caption.title }}</span>
         </div>
         <a class="tree-content" data-toggle="modal" data-target="#p-{{ project.caption.title | slugify }}"
           href="#p-{{ project.caption.title | slugify }}" style="text-decoration: none; color: inherit;">
           <div class="tree-img-wrapper">
             {% if project.caption.thumbnail contains 'http' %}
-            <img src="{{ project.caption.thumbnail }}" alt="{{ project.caption.title }}">
+            <img src="{{ project.caption.thumbnail }}" alt="{{ project.alt | default: project.caption.title }}" loading="lazy">
+            {% elsif project.caption.thumbnail %}
+            <img src="{{ site.baseurl }}/{{ project.caption.thumbnail }}" alt="{{ project.alt | default: project.caption.title }}" loading="lazy">
             {% else %}
-            <img src="{{ site.baseurl }}/{{ project.caption.thumbnail }}" alt="{{ project.caption.title }}">
+            <span class="tree-img-fallback">{{ project.caption.title | slice: 0, 1 }}</span>
             {% endif %}
           </div>
           <div class="tree-text">
-            <h4>{{ project.caption.title }}</h4>
             <span class="project-tag">{{ catText }}</span>
+            <h4>{{ project.caption.title }}</h4>
             <p>{{ project.caption.subtitle }}</p>
           </div>
         </a>
       </div>
       {% endfor %}
 
-      <!-- Tree Roots (Extended from Trunk Lines) -->
-      <svg class="tree-roots-svg" viewBox="0 0 400 180" preserveAspectRatio="xMidYMin meet">
-        <defs>
-          <filter id="rootGlow" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="6" result="coloredBlur" />
-            <feMerge>
-              <feMergeNode in="coloredBlur" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-
-        <!-- Left trunk line extends down and splits into roots (Green) -->
-        <!-- Main extension -->
-        <path d="M185,0 L185,40 Q185,80 120,140 Q100,160 80,175" stroke="#00f260" stroke-width="6" fill="none"
-          stroke-linecap="round" filter="url(#rootGlow)" />
-        <!-- Secondary branch -->
-        <path d="M185,60 Q170,100 140,160" stroke="#00f260" stroke-width="4" fill="none" stroke-linecap="round"
-          filter="url(#rootGlow)" opacity="0.8" />
-
-        <!-- Center trunk line extends down (Pink) -->
-        <path d="M200,0 L200,50 Q200,120 200,170" stroke="#ff00cc" stroke-width="6" fill="none" stroke-linecap="round"
-          filter="url(#rootGlow)" />
-        <!-- Side branches -->
-        <path d="M200,80 Q190,120 175,165" stroke="#ff00cc" stroke-width="4" fill="none" stroke-linecap="round"
-          filter="url(#rootGlow)" opacity="0.7" />
-        <path d="M200,80 Q210,120 225,165" stroke="#ff00cc" stroke-width="4" fill="none" stroke-linecap="round"
-          filter="url(#rootGlow)" opacity="0.7" />
-
-        <!-- Right trunk line extends down and splits (Gold) -->
-        <!-- Main extension -->
-        <path d="M215,0 L215,40 Q215,80 280,140 Q300,160 320,175" stroke="#D4AF37" stroke-width="6" fill="none"
-          stroke-linecap="round" filter="url(#rootGlow)" />
-        <!-- Secondary branch -->
-        <path d="M215,60 Q230,100 260,160" stroke="#D4AF37" stroke-width="4" fill="none" stroke-linecap="round"
-          filter="url(#rootGlow)" opacity="0.8" />
+      <svg class="tree-roots-svg" viewBox="0 0 480 170" preserveAspectRatio="xMidYMin meet" aria-hidden="true">
+        <path class="root-path school" d="M228 0V34Q228 76 68 150" />
+        <path class="root-path personal" d="M236 0V46Q236 92 186 158" />
+        <path class="root-path team" d="M244 0V46Q244 92 294 158" />
+        <path class="root-path work" d="M252 0V34Q252 76 412 150" />
       </svg>
     </div>
   </div>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">企业官网 2.0 前端交付脱敏概览</title><desc id="desc">抽象展示多页面、公共组件和质量验证流程，不含真实业务数据。</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#08111e"/><stop offset="1" stop-color="#15253d"/></linearGradient><linearGradient id="a"><stop stop-color="#54e1a6"/><stop offset="1" stop-color="#60a5fa"/></linearGradient></defs>
+  <rect width="1200" height="675" rx="28" fill="url(#bg)"/><circle cx="1030" cy="80" r="240" fill="#60a5fa" opacity=".08"/>
+  <text x="72" y="74" fill="#8ea0b8" font-family="Arial,PingFang SC" font-size="18" letter-spacing="5">SANITIZED CASE STUDY · FRONTEND</text>
+  <text x="72" y="142" fill="#fff" font-family="Arial,PingFang SC" font-size="48" font-weight="700">企业官网 2.0 前端交付</text>
+  <text x="72" y="182" fill="#8da0b8" font-family="Arial,PingFang SC" font-size="20">页面实现 · 公共组件 · 环境排障 · 视觉收口</text>
+  <rect x="72" y="238" width="676" height="330" rx="20" fill="#0c1726" stroke="#ffffff" stroke-opacity=".12"/>
+  <rect x="98" y="270" width="624" height="42" rx="10" fill="#13243a"/><circle cx="122" cy="291" r="6" fill="#54e1a6"/><rect x="146" y="284" width="180" height="14" rx="7" fill="#d9e7f6" opacity=".28"/>
+  <rect x="98" y="334" width="282" height="202" rx="14" fill="#152942"/><rect x="398" y="334" width="324" height="92" rx="14" fill="#102136"/><rect x="398" y="444" width="324" height="92" rx="14" fill="#102136"/>
+  <path d="M430 495c52-82 92-17 140-85s80 6 122-32" fill="none" stroke="url(#a)" stroke-width="6" stroke-linecap="round"/>
+  <g font-family="Arial,PingFang SC"><text x="820" y="292" fill="#54e1a6" font-size="16">DELIVERY</text><text x="820" y="338" fill="#fff" font-size="26" font-weight="700">开发 → 提测 → 收尾</text><text x="820" y="402" fill="#8da0b8" font-size="17">组件一致性</text><rect x="820" y="418" width="270" height="8" rx="4" fill="#26374b"/><rect x="820" y="418" width="234" height="8" rx="4" fill="#54e1a6"/><text x="820" y="468" fill="#8da0b8" font-size="17">验证完整度</text><rect x="820" y="484" width="270" height="8" rx="4" fill="#26374b"/><rect x="820" y="484" width="248" height="8" rx="4" fill="#60a5fa"/></g>
+  <text x="72" y="630" fill="#64748b" font-family="Arial,PingFang SC" font-size="15">配图为脱敏概览，不是业务页面截图</text>
+</svg>
