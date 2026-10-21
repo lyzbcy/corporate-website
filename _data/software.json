@@ -1,0 +1,204 @@
+{
+  "source": "捞鱼软件中心公开产品目录",
+  "updated": "2026-10-21",
+  "center": {
+    "downloadUrl": "https://github.com/lyzbcy/laoyu-software-center-downloads/releases/latest"
+  },
+  "products": [
+    {
+      "id": "airpods-buddy",
+      "name": "AirPods 小助手",
+      "summary": "在 Windows 上快捷连接和管理 AirPods。",
+      "category": "桌面效率",
+      "stage": "正式版",
+      "kind": "desktop",
+      "siteUrl": "https://lyzbcy.github.io/airpods-buddy.html",
+      "iconImage": "assets/img/software-center/airpods-buddy.png"
+    },
+    {
+      "id": "local-run-frontend",
+      "name": "本地运行前端项目",
+      "summary": "集中管理并一键启动本机前端项目。",
+      "category": "开发工具",
+      "stage": "正式版",
+      "kind": "desktop",
+      "siteUrl": "https://lyzbcy.github.io/local-run-frontend/",
+      "iconImage": "assets/img/software-center/local-run-frontend.png"
+    },
+    {
+      "id": "xuhuohua",
+      "name": "自动续火花",
+      "summary": "集中管理续火花任务，让日常互动更轻松。",
+      "category": "桌面效率",
+      "stage": "正式版",
+      "kind": "desktop",
+      "siteUrl": "https://lyzbcy.github.io/xuhuohua/",
+      "iconImage": "assets/img/software-center/xuhuohua.png"
+    },
+    {
+      "id": "sticker-maker",
+      "name": "表情包一键制作",
+      "summary": "把图片变成表情包，让创作、排版和导出更简单。",
+      "category": "内容创作",
+      "stage": "正式版",
+      "kind": "desktop",
+      "siteUrl": "https://lyzbcy.github.io/sticker-maker/",
+      "iconImage": "assets/img/software-center/sticker-maker.png"
+    },
+    {
+      "id": "yijian-toudi",
+      "name": "一键投递",
+      "summary": "本地求职工作台；Windows 版仍处于测试阶段。",
+      "category": "桌面效率",
+      "stage": "测试版",
+      "kind": "desktop",
+      "siteUrl": "https://lyzbcy.github.io/yijian-toudi/",
+      "iconImage": "assets/img/software-center/yijian-toudi.png"
+    },
+    {
+      "id": "laoyu-tagger",
+      "name": "捞鱼打标工具",
+      "summary": "BGM 与音效素材整理工具；解压后按指南运行 .bat，需 Node.js。",
+      "category": "内容创作",
+      "stage": "正式版",
+      "kind": "desktop",
+      "siteUrl": "https://lyzbcy.github.io/laoyu-tagger/",
+      "iconImage": "assets/img/software-center/laoyu-tagger.png"
+    },
+    {
+      "id": "miaomiao-tools",
+      "name": "捞鱼妙妙工具合集",
+      "summary": "查看已发布的 Agent Skills 与使用说明。",
+      "category": "AI Skills",
+      "stage": "网页入口",
+      "kind": "skill",
+      "siteUrl": "https://lyzbcy.github.io/laoyu-miaomiao-tools/"
+    },
+    {
+      "id": "experiment-report",
+      "name": "实验报告助手",
+      "summary": "自动生成实验报告与可视化展示。",
+      "category": "AI Skills",
+      "stage": "Skill Release",
+      "kind": "skill",
+      "siteUrl": "https://github.com/lyzbcy/experiment-report-skill"
+    },
+    {
+      "id": "fanqie-publisher",
+      "name": "小说与脚本创作",
+      "summary": "从灵感到正文，查看创作与发布工作流。",
+      "category": "AI Skills",
+      "stage": "Skill Release",
+      "kind": "skill",
+      "siteUrl": "https://github.com/lyzbcy/fanqie-publisher"
+    },
+    {
+      "id": "douyin-comment",
+      "name": "抖音评论自动回复",
+      "summary": "了解评论回复自动化与使用方法。",
+      "category": "AI Skills",
+      "stage": "Skill Release",
+      "kind": "skill",
+      "siteUrl": "https://github.com/lyzbcy/douyin-comment-automation"
+    },
+    {
+      "id": "general-knowledge",
+      "name": "通识知识地图",
+      "summary": "按主题探索知识，建立自己的理解框架。",
+      "category": "学习与趣味",
+      "stage": "在线体验",
+      "kind": "web",
+      "siteUrl": "https://lyzbcy.github.io/general-knowledge/",
+      "iconImage": "assets/img/software-center/general-knowledge.png"
+    },
+    {
+      "id": "computer-knowledge",
+      "name": "计算机知识地图",
+      "summary": "把计算机知识连接成一张清晰的地图。",
+      "category": "学习与趣味",
+      "stage": "在线体验",
+      "kind": "web",
+      "siteUrl": "https://lyzbcy.github.io/computer-knowledge/"
+    },
+    {
+      "id": "os-study",
+      "name": "操作系统学习",
+      "summary": "梳理操作系统重点，辅助课程学习与复习。",
+      "category": "学习与趣味",
+      "stage": "在线体验",
+      "kind": "web",
+      "siteUrl": "https://lyzbcy.github.io/os-study/",
+      "iconImage": "assets/img/software-center/os-study.png"
+    },
+    {
+      "id": "gaokao-time-machine",
+      "name": "高考时光机",
+      "summary": "回到那年高考，体验一段校园时光。",
+      "category": "学习与趣味",
+      "stage": "在线体验",
+      "kind": "web",
+      "siteUrl": "https://lyzbcy.github.io/gaokao-time-machine/#/",
+      "iconImage": "assets/img/software-center/gaokao-time-machine.png"
+    },
+    {
+      "id": "jiahao-test",
+      "name": "嘉豪值测试",
+      "summary": "一个轻松有趣的在线小测试。",
+      "category": "学习与趣味",
+      "stage": "在线体验",
+      "kind": "web",
+      "siteUrl": "https://lyzbcy.github.io/jiahao-test/",
+      "iconImage": "assets/img/software-center/jiahao-test.png"
+    },
+    {
+      "id": "laoyu-sync",
+      "name": "捞鱼同步小助手",
+      "summary": "中文引导电脑间同步文件，桌面小鱼实时展示状态。",
+      "category": "桌面效率",
+      "stage": "内测版",
+      "kind": "desktop",
+      "siteUrl": "https://github.com/lyzbcy/laoyu-sync",
+      "iconImage": "assets/img/software-center/laoyu-sync.png"
+    },
+    {
+      "id": "laoyu-screen-switch",
+      "name": "捞鱼屏幕开关",
+      "summary": "自定义快捷键关屏与亮屏；系统待机、黑屏遮罩和双击 BAT，电脑继续运行。",
+      "category": "桌面效率",
+      "stage": "正式版",
+      "kind": "desktop",
+      "siteUrl": "https://github.com/lyzbcy/laoyu-screen-switch-downloads/releases",
+      "iconImage": "assets/img/software-center/laoyu-screen-switch.png"
+    },
+    {
+      "id": "paid-to-watch",
+      "name": "捞鱼桌脚看电视",
+      "summary": "在捞鱼软件推荐卡片中播放本地视频或网页，老板键遮挡并静音。",
+      "category": "桌面效率",
+      "stage": "正式版",
+      "kind": "desktop",
+      "siteUrl": "https://github.com/lyzbcy/laoyu-desk-tv",
+      "iconImage": "assets/img/software-center/paid-to-watch.png"
+    },
+    {
+      "id": "nettools",
+      "name": "捞鱼的网络工具",
+      "summary": "检查网络、按故障修复，并按所选间隔保活。",
+      "category": "开发工具",
+      "stage": "正式版",
+      "kind": "desktop",
+      "siteUrl": "https://help.wshoto.com/resource/70c3ed19ddbc4a9fa158d585895e683d/f4d7c86e.html",
+      "iconImage": "assets/img/software-center/nettools.png"
+    },
+    {
+      "id": "laoyu-disk-cleaner",
+      "name": "捞鱼C盘清理大师",
+      "summary": "查看真实磁盘占用，审查当前用户缓存后再决定是否清理。",
+      "category": "桌面效率",
+      "stage": "正式版",
+      "kind": "desktop",
+      "siteUrl": "https://github.com/lyzbcy/laoyu-disk-cleaner-downloads/releases",
+      "iconImage": "assets/img/software-center/laoyu-disk-cleaner.png"
+    }
+  ]
+}

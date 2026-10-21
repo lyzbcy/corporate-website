@@ -18,7 +18,7 @@ baseurl: "/corporate-website" # the subpath of your site, e.g. /blog
 
 title      : 捞鱼工作室
 email      : lyzbcy@qq.com #this is also the email contact forms will go to
-description: "这是一个工作室官网"
+description: "捞鱼工作室：以捞鱼软件中心为入口，探索桌面效率、内容创作、开发工具、Agent Skills 与学习作品。"
 author     : 捞鱼
 # logo:     #optional, defaults to site title
   # path: assets/img/clients/creative-market.jpg
@@ -66,6 +66,8 @@ highlighter: rouge
 
 # Exclude files from processing
 exclude:
+  - scripts
+  - AGENTS.md
   - Gemfile
   - Gemfile.lock
   - node_modules

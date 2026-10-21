@@ -1,82 +1,38 @@
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-    <div class="container">
-	  <a class="navbar-brand js-scroll-trigger" href="#page-top">
-          {%- if site.logo -%}
-            <img height="{{ site.logo.height | default: 52 }}" src="{% if site.logo.path contains '://' or site.logo.path | slice: 0, 1 == '/' %}{{ site.logo.path }}{% else %}{{ site.baseurl }}/{{ site.logo.path }}{% endif %}"/>
-          {%- else -%}
-            {{ site.title }}
-          {%- endif -%}
-      </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto">
-        {% if site.locale and site.locale != "" and site.locale != nil %}
-        {% for link in site.data.navigation[site.locale].nav %}
-          <li class="nav-item">
-            {%- if link.url -%}
-              <a class="nav-link js-scroll-trigger" href="{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
-            {%- elsif link.section -%}
-              <a class="nav-link js-scroll-trigger" href="#{{ link.section }}">{{ link.title }}</a>
-            {%- else -%}
-              <a class="nav-link js-scroll-trigger" href="#">{{ link.title }}</a>
-            {%- endif -%}
-          </li>
-        {% endfor %}
-        {% else %}
-        {% for link in site.data.navigation.nav %}
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav" aria-label="主导航">
+  <div class="container">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">{{ site.title }}</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="展开导航">菜单 <i class="fas fa-bars" aria-hidden="true"></i></button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase ml-auto">
+        {% assign navigation = site.data.navigation[site.locale].nav | default: site.data.navigation.nav %}
+        {% for link in navigation %}
         <li class="nav-item">
-          {%- if link.url -%}
-            <a class="nav-link js-scroll-trigger" href="{{ site.baseurl }}{{ link.url }}">{{ link.title }}</a>
-          {%- elsif link.section -%}
-            <a class="nav-link js-scroll-trigger" href="#{{ link.section }}">{{ link.title }}</a>
-          {%- else -%}
-            <a class="nav-link js-scroll-trigger" href="#">{{ link.title }}</a>
-          {%- endif -%}
+          {% if link.url %}
+          <a class="nav-link" href="{% if link.url contains '://' %}{{ link.url }}{% else %}{{ site.baseurl }}{{ link.url }}{% endif %}">{{ link.title }}</a>
+          {% else %}
+          <a class="nav-link js-scroll-trigger" href="#{{ link.section }}">{{ link.title }}</a>
+          {% endif %}
         </li>
         {% endfor %}
-        {% endif %}
-        </ul>
-      </div>
+      </ul>
     </div>
-  </nav>
-  <!-- End Navigation -->
-  
-  <!-- Header -->
-  {% if site.locale and site.locale != "" and site.locale != nil %}
-  <header class="masthead">
-    <div class="container">
-      <div class="intro-text">
-	  {%- if site.data.sitetext[site.locale].header.title -%}
-        <div class="intro-lead-in">{{ site.data.sitetext[site.locale].header.title | markdownify }}</div>
-	  {%- endif -%}
-	  {%- if site.data.sitetext[site.locale].header.text -%}
-        <div class="intro-heading text-uppercase">{{ site.data.sitetext[site.locale].header.text | markdownify }}</div>
-	  {%- endif -%}
-	  {%- if site.data.sitetext[site.locale].header.button -%}
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{{ site.data.sitetext[site.locale].header.buttonlink }}">{{ site.data.sitetext[site.locale].header.button }}</a>
-	  {%- endif -%}
+  </div>
+</nav>
+<header class="masthead studio-hero">
+  <video id="studio-intro" class="studio-video" muted loop playsinline preload="metadata" poster="{{ site.baseurl }}/assets/img/software-center/brand.png" aria-hidden="true" tabindex="-1">
+    <source src="{{ site.baseurl }}/assets/img/software-center/intro.webm" type="video/webm">
+  </video>
+  <div class="container">
+    <div class="studio-hero-copy">
+      <span class="studio-eyebrow">LAOYU STUDIO / 独立开发，持续创造</span>
+      <h1>让好用的软件，<br><span>触手可及。</span></h1>
+      <p>你好，我是捞鱼。把日常里的一点麻烦，做成顺手的小工具。现在，用捞鱼软件中心，把它们带到你的桌面。</p>
+      <div class="studio-actions">
+        <a class="studio-button primary" href="{{ site.data.software.center.downloadUrl }}">下载捞鱼软件中心 <span aria-hidden="true">↗</span></a>
+        <a class="studio-text-link js-scroll-trigger" href="#software-library">探索所有工具 <span aria-hidden="true">↓</span></a>
       </div>
+      <div class="studio-hero-meta"><span>当前主推 · 捞鱼软件中心</span><span>{{ site.data.software.products.size }} 个工具入口</span><span>Windows / macOS</span></div>
     </div>
-  </header>
-  {% else %}
-  <header class="masthead">
-    <div class="container">
-      <div class="intro-text">
-	  {%- if site.data.sitetext.header.title -%}
-        <div class="intro-lead-in">{{ site.data.sitetext.header.title | markdownify }}</div>
-	  {%- endif -%}
-	  {%- if site.data.sitetext.header.text -%}
-        <div class="intro-heading text-uppercase">{{ site.data.sitetext.header.text | markdownify }}</div>
-	  {%- endif -%}
-	  {%- if site.data.sitetext.header.button -%}
-        <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="{{ site.data.sitetext.header.buttonlink }}">{{ site.data.sitetext.header.button }}</a>
-	  {%- endif -%}
-      </div>
-    </div>
-  </header>
-  {% endif %}
-  <!-- End Header -->
+  </div>
+  <button type="button" id="studio-motion-toggle" class="studio-motion-toggle" aria-pressed="false" hidden>播放背景动画 ▷</button>
+</header>

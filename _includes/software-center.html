@@ -1,0 +1,63 @@
+{% assign library = site.data.software.products %}
+<section id="software-center" class="center-feature" aria-labelledby="center-title">
+  <div class="container">
+    <div class="center-feature-top">
+      <div>
+        <span class="studio-eyebrow">THE FLAGSHIP / 主推产品</span>
+        <h2 id="center-title">捞鱼软件中心</h2>
+        <p class="center-feature-lead">好工具，从这里开始。</p>
+        <p class="center-feature-desc">把散落在各处的软件、创作工具和学习入口，收进一个桌面工作台。发现、下载、打开，少找一步，多做一点。</p>
+        <div class="studio-actions">
+          <a class="studio-button primary" href="{{ site.data.software.center.downloadUrl }}">下载软件中心 <span aria-hidden="true">↗</span></a>
+          {% assign center_project = site.portfolio | where: 'product_id', 'center' | first %}
+          <a class="studio-text-link" href="#p-{{ center_project.caption.title | slugify }}" data-toggle="modal" data-target="#p-{{ center_project.caption.title | slugify }}">了解这个产品 <span aria-hidden="true">→</span></a>
+        </div>
+        <p class="center-platforms">Windows · macOS（Apple 芯片 / Intel）</p>
+      </div>
+      <div class="center-constellation" aria-label="软件中心里的部分工具">
+        <div class="center-orbit-label">LAOYU SOFTWARE CENTER</div>
+        <img class="center-brand-art" src="{{ site.baseurl }}/assets/img/software-center/brand.png" alt="捞鱼软件中心原创形象" width="230" height="230" loading="lazy">
+        <div class="center-orbit-tools">
+          {% assign desktop = library | where: 'kind', 'desktop' %}
+          {% for product in desktop limit: 6 %}
+          <a href="{{ product.siteUrl }}" title="{{ product.name | escape }}"><img src="{{ site.baseurl }}/{{ product.iconImage }}" alt="{{ product.name | escape }}" width="48" height="48" loading="lazy"></a>
+          {% endfor %}
+        </div>
+        <p>一个入口，连接日常所需。</p>
+      </div>
+    </div>
+    <div class="center-benefits">
+      <div><span>01 / 发现</span><h3>按用途，找到趁手的工具</h3><p>桌面效率、内容创作、开发工具、AI Skills、学习与趣味。</p></div>
+      <div><span>02 / 准备</span><h3>下载与更新，有迹可循</h3><p>支持的软件包提供下载与文件校验，查看发布记录和使用指南。</p></div>
+      <div><span>03 / 使用</span><h3>自己的软件，集中打开</h3><p>识别本机软件，也支持手动关联，让常用工具有一个固定位置。</p></div>
+    </div>
+  </div>
+</section>
+<section id="software-library" class="studio-library" aria-labelledby="library-title">
+  <div class="container">
+    <div class="library-heading"><div><span class="studio-eyebrow">BUILT FOR EVERYDAY / 产品库</span><h2 id="library-title">总有一个，刚好用得上。</h2></div><p>{{ library.size }} 个软件与工具入口<br>从软件中心的公开目录整理</p></div>
+    <div class="library-controls" hidden>
+      <div class="library-filters" role="group" aria-label="按用途筛选产品">
+        <button type="button" data-category="all" aria-pressed="true">全部</button>
+        {% assign categories = library | map: 'category' | uniq %}
+        {% for category in categories %}<button type="button" data-category="{{ category }}" aria-pressed="false">{{ category }}</button>{% endfor %}
+      </div>
+      <label class="library-search"><span class="sr-only">搜索软件与工具</span><input type="search" id="library-search" placeholder="搜索软件、用途…" autocomplete="off"></label>
+    </div>
+    <p class="library-count" role="status" aria-live="polite">共 {{ library.size }} 个工具</p>
+    <div class="studio-product-grid">
+      {% for product in library %}
+      <article class="studio-product" data-category="{{ product.category }}" data-search="{{ product.name | append: ' ' | append: product.summary | append: ' ' | append: product.category | escape }}">
+        <div class="studio-product-top">
+          {% if product.iconImage %}<img src="{{ site.baseurl }}/{{ product.iconImage }}" alt="" width="52" height="52" loading="lazy">{% else %}<span class="product-monogram" aria-hidden="true">{{ product.name | slice: 0, 1 }}</span>{% endif %}
+          <span class="product-stage">{{ product.stage }}</span>
+        </div>
+        <h3>{{ product.name }}</h3><p>{{ product.summary }}</p>
+        <div class="studio-product-bottom"><span>{{ product.category }}</span><a href="{{ product.siteUrl }}">{% if product.kind == 'web' %}在线体验{% elsif product.kind == 'skill' %}查看指南{% else %}了解产品{% endif %}<span class="sr-only">：{{ product.name }}</span> <span aria-hidden="true">↗</span></a></div>
+      </article>
+      {% endfor %}
+    </div>
+    <p class="library-empty" hidden>暂时没有匹配的工具，试试其他关键词或分类。</p>
+    <a class="studio-archive-link" href="{{ site.baseurl }}/projects/">还有更多实验、作品和成长记录，去完整档案看看 <span aria-hidden="true">→</span></a>
+  </div>
+</section>

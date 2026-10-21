@@ -340,6 +340,10 @@ de-LU: #German (Luxembourg)
 # -----------------
 zh: &DEFAULT_ZH
   nav:
+    - title: "软件中心"
+      section: software-center
+    - title: "产品库"
+      section: software-library
     - title: "精选作品"
       section: portfolio
     - title: "作品时间树"

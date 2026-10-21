@@ -1,5 +1,6 @@
 // Interactive Particles.js Configuration
 document.addEventListener('DOMContentLoaded', function () {
+    if (document.querySelector('.studio-hero') || !document.querySelector('header.masthead')) return;
     // 1. Inject Particles.js Library (if not present)
     if (!window.particlesJS) {
         const script = document.createElement('script');
