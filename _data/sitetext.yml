@@ -824,7 +824,7 @@ zh: &DEFAULT_ZH
     people:
       - name: "捞鱼"
         role: "一个弱小但有梦想的开发者"
-        image: "https://s41.ax1x.com/2025/12/05/pZmPZPH.png"
+        image: "assets/img/software-center/brand.png"
         social:
           - url: https://www.douyin.com/user/MS4wLjABAAAAyuCPebezrJtaj66VWDIFJSOw6XZgneF8yE_mfJAs0ME?from_tab_name=main
             icon: fab fa-tiktok

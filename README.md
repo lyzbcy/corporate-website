@@ -1,3 +1,15 @@
+# 捞鱼工作室官网
+
+2026-10-21：以捞鱼软件中心作为首页主推产品，复用其原版开屏视频作为可暂停的叠加背景，增加 20 项产品库，并补入 9 份项目档案（现共 53 份）。保留原有精选、时间树、藏品库与项目检索。
+
+- 产品库数据：`_data/software.json`；首页展示：`_includes/software-center.html`。
+- 使用 `python scripts/sync-software-catalog.py <软件中心源码目录>` 更新公开展示字段和原图标，不导入运行数据或私人资料。同步后可把图标缩至 256px，以控制页面体积。
+- 软件中心官网入口使用公开发布页的 `/releases/latest`，避免写死旧版本。
+- 产品主推位置独立于评分排名；作品评分与建档规则见 `AGENTS.md`。
+- 发布仍沿用 main 分支的 GitHub Pages 工作流。
+
+以下保留原主题文档。
+
 # Agency Jekyll Theme
 [![RubyGems Downloads](https://img.shields.io/gem/dt/jekyll-agency?label=gem%20downloads)](https://rubygems.org/gems/jekyll-agency)
 [![LICENSE](https://img.shields.io/badge/license-MIT-blue)](/LICENSE.txt)
