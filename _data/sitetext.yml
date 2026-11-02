@@ -89,6 +89,7 @@ en: &DEFAULT_EN
       - title: "微盛"
         role: "Work"
         url: https://www.wshoto.com/
+        detail: /experience/weisheng/
         logo: assets/img/clients/weisheng.png
 
   team:
@@ -446,6 +447,7 @@ es: &DEFAULT_ES
       - title: "微盛"
         role: "Trabajo"
         url: https://www.wshoto.com/
+        detail: /experience/weisheng/
         logo: assets/img/clients/weisheng.png
 
   team:
@@ -649,6 +651,7 @@ de: &DEFAULT_DE
       - title: "微盛"
         role: "Beruf"
         url: https://www.wshoto.com/
+        detail: /experience/weisheng/
         logo: assets/img/clients/weisheng.png
 
   team:
@@ -814,6 +817,7 @@ zh: &DEFAULT_ZH
       - title: "微盛"
         role: "工作经历"
         url: https://www.wshoto.com/
+        detail: /experience/weisheng/
         logo: assets/img/clients/weisheng.png
 
   team:

@@ -23,10 +23,15 @@
       {% for client in experience.list %}
         <a
           class="experience-card"
+          {% if client.detail %}
+          href="{{ client.detail | relative_url }}"
+          aria-label="查看{{ client.title }}工作经历、证书与荣誉"
+          {% else %}
           href="{{ client.url }}"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="访问{{ client.title }}官网"
+          {% endif %}
         >
           <span class="experience-logo-stage">
             <img
@@ -42,7 +47,7 @@
             {% endif %}
             <strong>{{ client.title }}</strong>
           </span>
-          <span class="experience-arrow" aria-hidden="true">↗</span>
+          <span class="experience-arrow" aria-hidden="true">{% if client.detail %}→{% else %}↗{% endif %}</span>
         </a>
       {% endfor %}
     </div>
