@@ -17,7 +17,7 @@
 
 items:
   - id: skill-001
-    no: NO.001
+    "no": NO.001
     name: 官网开发技能书
     en: Official Site Dev Skill
     figure: grimoire
@@ -40,7 +40,7 @@ items:
         primary: true
 
   - id: skill-002
-    no: NO.002
+    "no": NO.002
     name: CRM 前端联调技能书
     en: CRM Frontend Delivery Skill
     figure: crm-grimoire
