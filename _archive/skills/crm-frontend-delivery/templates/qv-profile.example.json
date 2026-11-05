@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "projectName": "示例QV客户管理项目",
+  "owners": {
+    "dedup": "待确认",
+    "customerStage": "待确认",
+    "workStatus": "待确认",
+    "companyAssociation": "待确认",
+    "stageTasksPC": "待确认",
+    "opportunityH5": "待确认，不因PC配置任务自动认领"
+  },
+  "targets": {
+    "pc": {
+      "routeBase": "/",
+      "files": {
+        "dedupSettings": "packages/CrmSalesManagementSettings/src/components/DuplicateCheckSettings.vue",
+        "stageConfig": "packages/StatisticAnalysisCustomStageManage/src/index.vue",
+        "stageWrite": "packages/CrmCommon/src/utils/customerStage.ts",
+        "stageApi": "packages/CrmCommon/src/api/customerStage.ts",
+        "featureSettings": "src/views/enterprise/function-setting/index.vue",
+        "directory": "src/views/enterprise/address/list.vue",
+        "memberDetail": "src/views/enterprise/address/detail.vue",
+        "workStatusApi": "src/api/workStatus.ts",
+        "phasePage": "packages/CrmOpportunity/src/components/BusinessStage.vue",
+        "phaseDialog": "packages/CrmOpportunity/src/components/StageConfigDialog.vue",
+        "taskDialog": "packages/CrmOpportunity/src/components/StageTaskEditorDialog.vue",
+        "taskSerialize": "packages/CrmOpportunity/src/utils/stageTask.ts"
+      }
+    },
+    "h5": {
+      "routeBase": "/workbench/",
+      "files": {
+        "contactEntry": "packages/CrmContactToAdd/src/index.vue",
+        "dedupDialog": "packages/CrmContactToAdd/src/components/ContactDuplicateDialog.vue",
+        "cooperationApi": "packages/CrmContactToAdd/src/api/collaboration.ts",
+        "stageRules": "packages/CrmCommon/src/utils/customerStage.ts",
+        "stageSubmit": "packages/CrmContactDetails/src/utils/contactStageSubmit.ts",
+        "customerPage": "packages/CrmCustomerIndex/src/index.vue",
+        "companyCreate": "packages/CrmCompanyCreate/src/index.vue",
+        "companyPicker": "packages/CrmCompanyCreate/src/components/ChooseCompany/index.vue",
+        "companyMode": "packages/CrmCommon/src/utils/companyAssociation.ts",
+        "statusBadge": "src/views/mine/components/WorkStatusBadge.vue",
+        "workStatusApi": "src/api/workStatus.ts"
+      }
+    }
+  },
+  "operations": {
+    "contact.repeatDetail": {"adapter": "待映射", "success": "repeatHit为明确布尔值", "fields": ["scene", "contactId", "list", "repeatToken", "expireAt", "policy", "items"]},
+    "contact.joinCooperation": {"adapter": "待映射", "success": "success === true", "fields": ["contactId", "repeatToken", "sourceScene", "cooperStatus"]},
+    "contact.stageRead": {"adapter": "待映射", "success": "当前完整详情与字段映射", "fields": ["contactDetailDTO", "customerStageDTO", "customerStageConfig", "nonSensitiveMap"]},
+    "contact.stageWrite": {"adapter": "待映射", "success": "按当前协议并写后回查", "fields": ["contactId", "customerStageId", "contactVersion", "fieldMap"]},
+    "employee.statusRead": {"adapter": "待映射", "success": "状态与权限明确", "fields": ["featureEnabled", "workStatus", "version", "canEdit", "accountBound", "accountEnabled"]},
+    "employee.statusWrite": {"adapter": "待映射", "success": "确认状态及版本完整", "fields": ["workStatus", "version"]},
+    "employee.page": {"adapter": "待映射", "success": "服务端过滤后分页", "fields": ["records", "total", "workStatusList", "workStatusCount"]},
+    "opportunity.phaseRead": {"adapter": "待映射", "success": "完整阶段与任务配置", "fields": ["taskConfigList", "userTagList"]},
+    "opportunity.phaseWrite": {"adapter": "待映射", "success": "确认成功再回查", "fields": ["phase", "taskConfigList"]}
+  },
+  "rules": {
+    "confirmedForTarget": false,
+    "contactStageUpdateMode": "full-edit-example-confirm-contract",
+    "disabledStageHistory": "retain-example-confirm-prd",
+    "missingManualRule": "confirm-legacy-contract",
+    "phaseNameMax": 10,
+    "taskNameMax": 15,
+    "taskDescriptionMax": 50,
+    "descriptionRequired": false,
+    "statusValues": ["ONLINE", "RESTING"],
+    "countIgnoresStatusAndPagination": true
+  },
+  "environment": {
+    "expectedFrontendBuild": "待核实际资源",
+    "expectedBackendLane": "待核当前项目，不沿用历史值",
+    "tenantAndRole": "仅在目标工程本地记录，不写凭据"
+  }
+}
