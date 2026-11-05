@@ -20,10 +20,11 @@ permalink: /collection/
     <div class="vault-shelf">
       <div class="vault-items">
         {% for item in shelf_items %}
-        <button class="vault-item{% if item.placeholder %} is-placeholder{% endif %}" data-id="{{ item.id }}"{% if item.placeholder %} aria-label="未拆封的藏品"{% else %} aria-haspopup="dialog"{% endif %}>
+        <button id="{{ item.id }}" class="vault-item{% if item.placeholder %} is-placeholder{% endif %}" data-id="{{ item.id }}"{% if item.placeholder %} aria-label="未拆封的藏品"{% else %} aria-haspopup="dialog"{% endif %}>
           <span class="vault-halo" aria-hidden="true"></span>
           <span class="vault-figure">{% case item.figure %}
             {% when "grimoire" %}{% include vault/grimoire.svg %}
+            {% when "crm-grimoire" %}{% include vault/crm-grimoire.svg %}
             {% when "potion" %}{% include vault/potion.svg %}
             {% when "crystal" %}{% include vault/crystal.svg %}
             {% when "crate" %}{% include vault/crate.svg %}

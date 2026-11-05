@@ -39,12 +39,31 @@ items:
         icon: fab fa-github
         primary: true
 
-  - id: mystery-potion
-    placeholder: true
-    figure: potion
+  - id: skill-002
+    no: NO.002
+    name: CRM 前端联调技能书
+    en: CRM Frontend Delivery Skill
+    figure: crm-grimoire
     shelf: 1
-    plaque_name: "???"
-    plaque_sub: 待入库
+    plaque_name: CRM 前端联调技能书
+    plaque_sub: "NO.002 · 脱敏入库"
+    collected: 2026-11-05
+    origin: CRM 双端开发与灰度回归
+    category: 开发 Skill · 联调与交付
+    rarity: ★★★★☆
+    storage: _archive/skills/crm-frontend-delivery
+    story:
+      - 这本技能书来自一段从需求理解、双端开发走到灰度回归的协作经历。查重、客户阶段、员工状态和任务配置，既要能用，也要知道哪些结果真正被验证过。
+      - 多层弹窗分清草稿与保存，异步校验对应当前输入，状态失败保留确认值；交付时再核实际构建，而不是把代码推送当成上线。这些判断从真实问题中整理出来，也保留了越界改动需要精确撤回的教训。
+      - 公开包只保留通用工程方法和独立参考文档，移除了客户、同事、内部地址、接口与测试数据。接入其他项目时，按目标工程的需求、分工和契约重新核对。
+    actions:
+      - label: 查看藏品全貌
+        url: https://github.com/lyzbcy/corporate-website/tree/main/_archive/skills/crm-frontend-delivery
+        icon: fab fa-github
+        primary: true
+      - label: 下载 Skill
+        url: https://lyzbcy.github.io/corporate-website/assets/downloads/crm-frontend-delivery-skill.zip
+        icon: fas fa-download
 
   - id: mystery-crystal
     placeholder: true
