@@ -62,8 +62,8 @@ items:
         url: https://github.com/lyzbcy/corporate-website/tree/main/_archive/skills/crm-frontend-delivery
         icon: fab fa-github
         primary: true
-      - label: 下载 Skill
-        url: https://lyzbcy.github.io/corporate-website/assets/downloads/crm-frontend-delivery-skill.zip
+      - label: 下载 Skill v1.1.0
+        url: https://lyzbcy.github.io/corporate-website/assets/downloads/crm-frontend-delivery-skill.zip?v=1.1.0
         icon: fas fa-download
 
   - id: mystery-crystal
